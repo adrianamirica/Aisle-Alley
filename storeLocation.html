@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <!--<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />-->
+        <meta name="viewport" content="width=device-width; height=device-height; initial-scale=1.0; maximum-scale=1.0; user-scalable=no">
+        <!--<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>-->
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="default">
+	    
+        <link type="text/css" rel="stylesheet" href="style.css">
+        <title>Store Locator</title>
+	
+	<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script> <!--Must set to true or false-->
+    </head>
+   <!-- <body  onload="initialize()">-->
+    <body> 
+        <div id="container">
+		    <div class="toolbar" id="Toolbar">
+			<h1> Store Locator</h1>
+			<a class="button" onclick="showMapMarker();">List View</a>
+			<img src="img/AA_top_bar_icon.png" alt="Logo" class="logo">
+		    </div><!--End of toolbar -->
+		 
+		    <div class="searchbar" id="searchbar">
+			<div class="ui-input-search ui-icon-searchfield " id="divproductsToSearch">
+			    <input id="address" value="Enter a location or Zip code"
+				onclick="this.value='';" onfocus="this.select()" onblur="this.value=!this.value?'Enter a location or Zip code':this.value;"> 
+			    <!--<input type="button" style="background-color: black" value="Search" onclick="findAddress()"> -->
+			 </div>   
+			    <a class="search" onclick="findAddress()">Search</a>
+			
+		    </div>
+		  
+		    <div id="content" class="content" style="height:350px;">
+			<ul class="Find" id="MarkersList">	    
+			</ul>
+			<div id="map_canvas" style="width:100%; height: 100%"></div>
+			   
+		    </div>
+	</div>	
+    </body>
+</html>

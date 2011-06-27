@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+    <head>
+         <!--<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />-->
+        <meta name="viewport" content="width=device-width; height=device-height; initial-scale=1.0; maximum-scale=1.0; user-scalable=no">
+        <!--<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>-->
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="default">
+	    
+        <link type="text/css" rel="stylesheet" href="style.css">
+        <title>Aisle Alley</title>
+        
+    </head>
+    <body>
+        
+       <div id="container"> 
+	    <div class="toolbar" id="Toolbar">
+		<h1> Find Products</h1>
+		<img src="img/AA_top_bar_icon.png" alt="Logo" class="logo">
+	    </div><!--End of toolbar -->
+	    <div class="searchbar" id="searchbar">
+		<div class="ui-input-search ui-icon-searchfield " id="divproductsToSearch">
+		    <input  id="productsToSearch" value="Enter a product"
+			   onclick="this.value='';" onfocus="this.select()" onblur="this.value=!this.value?'Enter a product':this.value;" />
+		    <!--<a class="search" onclick="findProducts()" >Search</a>-->
+		    <!--<a class="search" href="#">Search</a>-->
+		</div>
+		<a class="search" onclick="findProducts()" >Search</a>
+	    </div>
+	   
+	    <div id="content" style="height:250px">
+		<div id="divresultList" class="ui-shadow" style="display: none;">
+		    
+		    <ul id="resultList">
+			
+		    </ul>
+		   <!-- <ul id="resultList" >
+			<li >
+			    <h3 >Stephen Weber</h3>
+			    <p ><strong>You've been invited to a meeting at Filament Group in Boston, MA</strong></p>
+			    <p >Hey Stephen, if you're available at 10am tomorrow, we've got a meeting with the jQuery team.</p>
+			</li>
+		    </ul>-->
+		</div>
+	    </div>
+	</div>
+        
+        
+        <!--<div id="footer"> 
+        
+             <ul class="edgetoedge">
+                <li><a href="index.html">Featured</a></li>
+                <li><a href="#">Find Products </a></li>
+                <li><a href="shoppingList.html">Shopping List</a></li>
+                <li><a href="storeLocation.html">Store Locator</a></li>
+             </ul>
+        
+        </div>-->
+            
+    </body>
+    <!--<script>
+	    var hScreen=document.documentElement.clientHeight;// browser window height
+            
+            var hToolbar=document.getElementById("Toolbar").clientHeight+1;// 1 px from the css toolbar border-bottom 
+            var hFooter= document.getElementById("footer").clientHeight;
+	    var hSearchBar= document.getElementById("searchbar").clientHeight+1;// 1 px from the css searchbar border-bottom 
+            var calculateHeight=hScreen-hToolbar-hFooter-hSearchBar;
+            var contentdiv = document.getElementById("content");
+            contentdiv.style.height=calculateHeight+ "px";
+            
+            //console.log("Your screen height is " + hScreen);
+            //console.log("Your Toolbar height is " + hToolbar);
+            //console.log("Your footer height is " + hFooter);
+            //console.log("Your div content height must be" + calculateHeight);
+    </script>-->
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+    <head>
+         <!--<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />-->
+        <meta name="viewport" content="width=device-width; height=device-height; initial-scale=1.0; maximum-scale=1.0; user-scalable=no">
+        <!--<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>-->
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="default">
+
+        <link type="text/css" rel="stylesheet" href="style.css">
+	<!--<script type="text/javascript" src="jqtouch/jqtouch.js"></script>
+	<script type="text/javascript" src="jquery.js"></script>-->
+	<script type="text/javascript" src="shopping.js"></script> <!--initial values-->
+        <title>Aisle Alley</title>
+	
+
+	<!--<script>
+	   console.log("sessionStorage.value="+ sessionStorage.value);
+	   sessionStorage.value=parseFloat(sessionStorage.value)+10;
+	   console.log("sessionStorage.value+10="+ sessionStorage.value);
+	    
+	    
+	    
+	    console.log("ShoppingCart="+ ShoppingCart);
+	    console.log("sessionStorage.storesArray="+ sessionStorage.storesArray);
+	    console.log("sessionStorage.ShoppingCart as string="+ sessionStorage.ShoppingCart);
+	    console.log("sessionStorage.ShoppingCart as float="+ parseFloat(sessionStorage.ShoppingCart));
+	    ShoppingCart=parseFloat(sessionStorage.ShoppingCart);// get the value from the session
+	   console.log("ShoppingCart after ="+ ShoppingCart);
+	    
+	</script>-->
+        
+    </head>
+   <!-- <body onload="findShoppingProducts()">-->
+    <body> 
+        <div id="container">
+	    <div class="toolbar" id="Toolbar">
+		<h1>Shopping List</h1>
+		<img src="img/AA_top_bar_icon.png" alt="Logo" class="logo">
+	    </div><!--End of toolbar -->
+	    <div id="content" >
+		<ul class="Category" id="Category">
+		    <!--<li class="arrow" onclick="AddToShoppingList()"><a href="#" >Dates</a></li>-->
+		</ul>
+	    </div>
+	    
+	</div><!-- end div id container-->
+	
+	
+        <!--<div id="footer">
+             <ul class="edgetoedge">
+                <li><a href="index.html">Featured</a></li>
+                <li><a href="findProducts.html">Find Products </a></li>
+                <li><a href="#">Shopping List</a></li>
+                <li><a href="storeLocation.html">Store Locator</a></li>
+             </ul>
+        </div><!-- end div id footer-->-->
+            
+    </body>
+    <!--<script>
+	    var hScreen=document.documentElement.clientHeight;// browser window height
+            
+            var hToolbar=document.getElementById("Toolbar").clientHeight+1;// 1 px from the css toolbar border-bottom 
+            var hFooter= document.getElementById("footer").clientHeight;
+	    //var hSearchBar= document.getElementById("searchbar").clientHeight+1;// 1 px from the css searchbar border-bottom 
+            //var calculateHeight=hScreen-hToolbar-hFooter-hSearchBar;
+	    var calculateHeight=hScreen-hToolbar-hFooter;
+            var contentdiv = document.getElementById("content");
+            contentdiv.style.height=calculateHeight+"px";
+	    
+	    document.getElementById("box").style.bottom=hFooter+"px";
+	    
+            
+            //console.log("Your screen height is " + hScreen);
+            //console.log("Your Toolbar height is " + hToolbar);
+            //console.log("Your footer height is " + hFooter);
+            //console.log("Your div content height must be" + calculateHeight);
+    </script>-->
+</html>

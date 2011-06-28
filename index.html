@@ -168,6 +168,7 @@
         
        if(DetectIphoneOrIpod()==true){
         $(document).ready(function () {
+            alert("detect iphone");
             var viewportwidth;
             var viewportheight;
             viewportwidth = window.innerWidth;
@@ -177,6 +178,7 @@
             function reorient(e) {
                 var landscape = (window.orientation == 90|| window.orientation== -90);// landscape true= landscape
                 if(landscape==true){
+                    alert("landscape");
                     viewportwidth = window.innerWidth;
                     viewportheight = window.innerHeight;
                     viewport = document.querySelector("meta[name=viewport]");
@@ -199,6 +201,7 @@
                     
                 }// end if landscape
                 else{
+                    alert("portrait");
                         viewport =  document.querySelector("meta[name=viewport]");
                         //viewport.setAttribute('content', 'height='+screen.height+'px');
                         //viewport.setAttribute('content', 'width='+screen.width+'px');
@@ -239,13 +242,11 @@
                     newOrientation='portrait';
                 }
                  if(landscape==true&& newOrientation!=oldOrientatin){
-                    //viewportwidth = window.innerWidth;
-                    //viewportheight = window.innerHeight;
                     viewport = document.querySelector("meta[name=viewport]");
                     viewport.setAttribute('content', 'width=device-height; initial-scale=1.0; maximum-scale=1.0;  user-scalable=no;');
                     viewport.setAttribute('content', 'height='+window.innerHeight+'px');
+                   
                     $('#container').width(ScreenHeight+60);// 60 px address bar
-                    
                     var hFooter= document.getElementById("footer").clientHeight;
                     var calculateHeight=ScreenWidth-hFooter-60;// 60 px address bar
                     $('#container').height(calculateHeight);
@@ -265,7 +266,6 @@
                     $('#container').height(calculateHeight);
                     $('#content').height($("#container").height()-$("#Toolbar").height()-$("#searchbar").height());
                     $('#content').width($('#container').width());
-                   
                     oldOrientatin='portrait';
                     
                  }

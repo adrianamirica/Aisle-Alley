@@ -168,7 +168,6 @@
         
        if(DetectIphoneOrIpod()==true){
         $(document).ready(function () {
-            alert("detect iphone");
             var viewportwidth;
             var viewportheight;
             viewportwidth = window.innerWidth;
@@ -176,6 +175,7 @@
             //alert("window.innerWidth" + window.innerWidth + "window.innerHeight" + window.innerHeight);
             //alert("screen.width" + screen.width + "screen.height" + screen.height);
             function reorient(e) {
+                alert("reorient function");
                 var landscape = (window.orientation == 90|| window.orientation== -90);// landscape true= landscape
                 if(landscape==true){
                     alert("landscape");

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<widget xmlns		= "http://www.w3.org/ns/widgets"
+	xmlns:gap	= "http://phonegap.com/ns/1.0"
+	id		= "com.absoluteitsolutions"
+	version 	= "1.0.0">
+
+	<name>Aisle Alley</name>
+
+	<description>
+		Aisle Alley- finding everything fast 
+	</description>
+
+	<author href="http://93.113.255.166/AdrianaTest/index.html"
+		email="adriana.mirica@absoluteitsolutions.com">
+		Adriana Mirica
+	</author>
+
+	<gap:platforms>
+		<gap:platform name="android" minVersion="2.1" />
+		<gap:platform name="webos" />
+		<gap:platform name="symbian.wrt" />
+		<gap:platform name="blackberry" project="widgets"/>
+	</gap:platforms>
+
+	<icon src="icon.png" gap:role="default" />
+        <gap:splash src="Default.png" height="480px" width="320px" />
+            
+        
+
+	<feature name="http://api.phonegap.com/1.0/geolocation"/>
+	<feature name="http://api.phonegap.com/1.0/network"/>
+
+	<!-- sample preference specification -->
+	<!-- <preference name="autorotate" value="false" readonly="true"/> -->
+</widget>

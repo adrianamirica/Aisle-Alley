@@ -143,12 +143,12 @@
         
         
         var myScroll;
-        function loaded() {
-                myScroll = new iScroll('content',{hScrollbar:false, desktopCompatibility: true });
-        }
-         
-        document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
-        document.addEventListener('DOMContentLoaded', loaded, false);
+        //function loaded() {
+        //        myScroll = new iScroll('content',{hScrollbar:false, desktopCompatibility: true });
+        //}
+        // 
+        //document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
+        //document.addEventListener('DOMContentLoaded', loaded, false);
        
        function onCompletion () {
         // Here modify the DOM in any way, eg: by adding LIs to the scroller UL
@@ -161,8 +161,13 @@
         
         //debugger;
         $(document).ready(function() {
-            
             loadPage();
+           
+            //myScroll.destroy();
+            //loaded();
+            
+            var FeaturedIcon=document.getElementsByTagName('i')[0];
+            $(FeaturedIcon).addClass('iactivelink');
             
         });
         
@@ -175,10 +180,10 @@
             //alert("window.innerWidth" + window.innerWidth + "window.innerHeight" + window.innerHeight);
             //alert("screen.width" + screen.width + "screen.height" + screen.height);
             function reorient(e) {
-                alert("reorient function");
+                
                 var landscape = (window.orientation == 90|| window.orientation== -90);// landscape true= landscape
                 if(landscape==true){
-                    alert("landscape");
+                   
                     viewportwidth = window.innerWidth;
                     viewportheight = window.innerHeight;
                     viewport = document.querySelector("meta[name=viewport]");
@@ -197,11 +202,12 @@
                     //alert("window.innerWidth" + window.innerWidth);
                     //alert(window.innerWidth+"X"+window.innerHeight );
                     Size();
+                   onCompletion(); 
                     
                     
                 }// end if landscape
                 else{
-                    alert("portrait");
+                    
                         viewport =  document.querySelector("meta[name=viewport]");
                         //viewport.setAttribute('content', 'height='+screen.height+'px');
                         //viewport.setAttribute('content', 'width='+screen.width+'px');
@@ -210,6 +216,7 @@
                         //viewport.setAttribute('content', 'width=480px; height=300px; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;');
                         //alert("portrait");
                         Size();
+                        onCompletion();
                 }
             }
             window.onorientationchange = reorient;
@@ -253,7 +260,12 @@
                     $('#content').height($("#container").height()-$("#Toolbar").height()-$("#searchbar").height());
                     $('#content').width($('#container').width());
                     
+                     //$('.big_content').height($("#content").height()/2-24);// div big_content 10 px from margin-bottom  and margin-top and 2 px from border top and bottom
+                    $('.big_content').width($("#content").width()-12-2);// div big_content 10 px from margin-left and margin-right and 2 px from border left and right
+                    //$('.small_content').height($("#content").height()/2-24);
+                    $('.small_content').width($("#content").width()/2-12);
                     
+                    onCompletion();
                     oldOrientatin='landscape';
                     
                  }
@@ -266,6 +278,14 @@
                     $('#container').height(calculateHeight);
                     $('#content').height($("#container").height()-$("#Toolbar").height()-$("#searchbar").height());
                     $('#content').width($('#container').width());
+                    
+                    
+                     //$('.big_content').height($("#content").height()/2-24);// div big_content 10 px from margin-bottom  and margin-top and 2 px from border top and bottom
+                    $('.big_content').width($("#content").width()-12-2);// div big_content 10 px from margin-left and margin-right and 2 px from border left and right
+                    //$('.small_content').height($("#content").height()/2-24);
+                    $('.small_content').width($("#content").width()/2-12);
+                    
+                    onCompletion();
                     oldOrientatin='portrait';
                     
                  }
@@ -357,12 +377,13 @@
                 //document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
                 //document.addEventListener('DOMContentLoaded', loaded, false);
                  //myScroll.refresh();
+                 //onCompletion();
             }
            
             
-            //$('.big_content').height($("#content").height()/2-24);// div big_content 10 px from margin-bottom  and margin-top and 2 px from border top and bottom
+            ////$('.big_content').height($("#content").height()/2-24);// div big_content 10 px from margin-bottom  and margin-top and 2 px from border top and bottom
             //$('.big_content').width($("#content").width()-12-2);// div big_content 10 px from margin-left and margin-right and 2 px from border left and right
-            //$('.small_content').height($("#content").height()/2-24);
+            ////$('.small_content').height($("#content").height()/2-24);
             //$('.small_content').width($("#content").width()/2-12);
             
             $(document.getElementById('Category')).ready(function() {
@@ -471,6 +492,11 @@
             $('#content').width($('#container').width());
             ////alert("content.height"+  $('#content').height() + "content width " +$('#content').width() );
            
+           
+             //$('.big_content').height($("#content").height()/2-24);// div big_content 10 px from margin-bottom  and margin-top and 2 px from border top and bottom
+            $('.big_content').width($("#content").width()-12-2);// div big_content 10 px from margin-left and margin-right and 2 px from border left and right
+            //$('.small_content').height($("#content").height()/2-24);
+            $('.small_content').width($("#content").width()/2-12);
            }
             
         </script>

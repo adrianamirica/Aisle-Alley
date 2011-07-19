@@ -1,54 +1,14 @@
-// if (!window.navigator.standalone) {
-//        document.addEventListener("DOMContentLoaded", adjustHeight, false);
-//        //window.addEventListener("orientationchange", adjustHeight, true);
-//    }
-//function adjustHeight() {
-//    var html = document.documentElement;
-//    var size = window.innerHeight;
-//    html.style.height = (size + size) + "px";
-//    window.setTimeout(function() {
-//        if (window.pageYOffset == 0) {
-//            window.scrollTo(0, 0);
-//        }
-//        html.style.height = window.innerHeight + "px";
-//    }, 0);
-//}
- 
-// //on iPhone Orientation change
-// function updateOrientation(){
-//    var hScreen=document.documentElement.clientHeight;// browser window height
-//    var WidthScreen=document.documentElement.clientWidth;
-//            
-//            //var hToolbar=document.getElementById("Toolbar").clientHeight+1;// 1 px from the css toolbar border-bottom 
-//            var hFooter= document.getElementById("footer").clientHeight;
-//            //var calculateHeight=hScreen-hToolbar-hFooter;
-//            var calculateHeight=hScreen-hFooter;
-//            //var contentdiv = document.getElementById("content");
-//            var contentdiv = document.getElementById("container");
-//            contentdiv.style.height=calculateHeight+ "px";
-//            $('#content').height($("#container").height()-$("#Toolbar").height()-$("#searchbar").height());
-//            
-//            //console.log("Your screen height is " + hScreen);
-//            //console.log("Your footer height is " + hFooter);
-//            //console.log("Your div content height must be" + calculateHeight);
-//            //console.log("Your div content height is" + contentdiv.style.height);
-// }
-//window.addEventListener("load", function() { setTimeout(loaded, 100) }, false);  
-//  
-//function loaded() {  
-//    document.getElementById("container").style.visibility = "visible";
-//    updateOrientation();
-//    window.scrollTo(0, 1); // pan to the bottom, hides the location bar  
-//}   
+    
 
 	    var deviceIphone = "iphone";
             var deviceIpod = "ipod";
             var deviceAndroid = "android";
+	    var deviceIpad="ipad";
             
             //Initialize our user agent string to lower case.
             var uagent = navigator.userAgent.toLowerCase();
             
-            //**************************
+            
             // Detects if the current device is an iPhone.
             function DetectIphone()
             {
@@ -58,7 +18,7 @@
                   return false;
             }
             
-            //**************************
+           
             // Detects if the current device is an iPod Touch.
             function DetectIpod()
             {
@@ -68,7 +28,7 @@
                   return false;
             }
             
-            //**************************
+            
             // Detects if the current device is an iPhone or iPod Touch.
             function DetectIphoneOrIpod()
             {
@@ -79,7 +39,7 @@
                 else
                    return false;
             }
-            //**************************
+            
             // Detects if the current device is an Android OS-based device.
             function DetectAndroid()
             {
@@ -88,116 +48,457 @@
                else
                   return false;
             }
-
-
-
-//var ShoppingCart=0;
-//sessionStorage.ShoppingCart=0;
+	    // Detects if the current device is an iPad tablet.
+	    function DetectIpad()
+	    {
+	       if (uagent.search(deviceIpad) > -1  && DetectWebkit())
+		  return true;
+	       else
+		  return false;
+	    }
 var storesArray = [
-			    [0, "Bush's Homestyle Baked Beans", "20oz", 2, 1.97, "Front" ,"A", "Dry Grocery"],
-			    [1, "Publix Baked Beans", "20oz", 2, 1.87, "Front",  "B", "Dry Grocery"],
-			    [2, "Kraft Chicken Stuffing", "6oz", 2, 1.59, "Middle", "C", "Dry Grocery"],
-			    [3, "Ragu Robusto Marinara Sauce", "26oz", 4, 2.65, "Middle", "A", "Dry Grocery"],
-			    [4, "Publix Marinara Sauce", "26oz", 4, 1.47, "Middle", "A", "Dry Grocery" ],
-			    [5, "Kraft Marshmollow Fluff", "7oz", 5, 1.59, "End", "D", "Dry Grocery"],
-			    [6, "Gredine Syrup", "12.7oz", 14, 2.49, "End", "A", "Dry Grocery"],
-			    [7, "Diet Rite 0 carb", "12-12oz", 14, 4.99, "End", "B", "Dry Grocery"],
-			    [8, "Coke* Buy 2 Get 2 FREE", "12-12oz", 14, 4.99, "Middle", "B", "Dry Grocery"],
-			    [9, "Kraft Marshmollow Fluff", "7oz", 4, 1.59, "End", "C", "Dry Grocery"],
-			    [10, "Vanila Waffers", "20oz", 10, 1.97, "Middle", "D", "Dry Grocery"],
-			    [11, "Quaker Life Ceral *Publix Challenge, Get Publix Life free", "12oz", 6, 3.99, "Middle", "B", "Dry Grocery"],
-			    [12, "Special K Ceral Bar *Publix Challenge, Get Publix Ceral Bar free", "8oz", 6, 2.64, "Middle", "A", "Dry Grocery"],
-                            [13, "Boneless Chicken Cutlets", "16oz", 9, 4.33, "Middle", "A", "Meat"],
-                            [14, "Mandarin Oranges", "12oz", 4, 3.12, "End", "A", "Produce"],
-                            [15, "Vitamin-D Milk", "8oz", 5, 2.99, "End", "A", "Dairy" ]
+			    [0, "Bush's Homestyle Baked Beans", "20oz", 2, 1.97, "Front" ,"A", "Dry Grocery", "0.jpg"],
+			    [1, "Publix Baked Beans", "20oz", 2, 1.87, "Front",  "B", "Dry Grocery", "1.jpg"],
+			    [2, "Kraft Chicken Stuffing", "6oz", 2, 1.59, "Middle", "C", "Dry Grocery", "2.jpg"],
+			    [3, "Ragu Robusto Marinara Sauce", "26oz", 4, 2.65, "Middle", "A", "Dry Grocery", "3.jpg"],
+			    [4, "Publix Marinara Sauce", "26oz", 4, 1.47, "Middle", "A", "Dry Grocery", "4.jpg" ],
+			    [5, "Kraft ", "7oz", 5, 1.59, "End", "D", "Dry Grocery", "5.jpg"],
+			    [6, "Gredine Syrup", "12.7oz", 14, 2.49, "End", "A", "Dry Grocery", "6.jpg"],
+			    [7, "Diet Rite 0 carb", "12-12oz", 14, 4.99, "End", "B", "Dry Grocery", "7.jpg"],
+			    [8, "Coke* Buy 2 Get 2 FREE", "12-12oz", 14, 4.99, "Middle", "B", "Drinks", "8.jpg"],
+			    [9, "Kraft Marshmallow Fluff", "7oz", 4, 1.59, "End", "C", "Dry Grocery", "9.jpg"],
+			    [10, "Vanila Waffers", "20oz", 10, 3.97, "Middle", "D", "Dry Grocery", "10.jpg"],
+			    [11, "Quaker Life Cereal *Publix Challenge", "12oz", 6, 3.99, "Middle", "B", "Dry Grocery", "11.jpg"],
+			    [12, "Special K Cereal Bar *Publix Challenge", "8oz", 6, 2.64, "Middle", "A", "Dry Grocery", "12.jpg"],
+                            [13, "Boneless Chicken Cutlets", "16oz", 9, 4.33, "Middle", "A", "Meat", "13.jpg"],
+                            [14, "Mandarin Oranges", "12oz", 4, 3.12, "End", "A", "Produce", "14.jpg"],
+                            [15, "Vitamin-D Milk", "8oz", 5, 2.99, "End", "A", "Dairy", "15.jpg" ],
+			    [16, "Reduced-fat milk", "12oz", 3, 4.00, "End", "A", "Dairy", "16.jpg"],
+			    [17, "Confectioners' sugar", "1oz", 3, 2.99, "Front", "B", "Dry Grocery", "17.jpg"],
+			    [18, "Frozen whole strawberries", "16oz", 5, 5.00, "Middle", "D", "Frozen", "18.jpg"],
+			    [19, "Bananas", "16oz", 4, 4.00, "End", "A", "Produce", "19.jpg"],
+			    [20, "Shredded Parmesan cheese","1 oz", 3, 3.00, "End", "D", "Dairy", "20.jpg"],
+			    [21, "Season croutons", "4 oz", 3,3.00, "Front", "B", "Dry Grocery", "21.jpg"],
+			    [22, "Caesar salad dressing", "6 pack",3,3.00, "Front", "B", "Dry Grocery", "22.jpg"],
+			    [23, "Refrigerated chicken breast strips", "10 oz",3,3.20, "Front", "B", "Meat", "23.jpg"],
+			    [24, "European salad blend", "32 oz",3,3.67, "Front", "B", "Produce", "24.jpg"],
+			    [25, "Coke diet CF ", "96FLOZ 8PK 12OZ", 3, 3.20, "Front", "B", "Drinks", "25.png"],
+			    [26, "Coke Diet", "12FLOZ 12PK 144 FLOZ", 3, 4.00, "Front", "B", "Drinks", "26.jpg"],
+			    [27, "Coke Diet", "2 Liter", 3, 1.10, "Front", "B", "Drinks", "27.png"],
+			    [28, "Coke Classic", "96FLOZ 8PK 12OZ PET", 3, 10.90,"Front", "B", "Drinks", "28.jpg" ],
+			    [29, "Coca Cola", "Dose", 3, 0.45, "Front", "B", "Drinks", "29.jpg"]
 				];
-//sessionStorage.ShoppingCartArray=[];
+			    
+
+var recipesArray=[
+		  [0, "Fruit Smoothies", 10, 3, "Place milk and sugar in blender. Break banana into chunks while adding into blender; and strawberries.", "Blend and high until smooth; scrape sides with rubber spatula, as needed.","Chill until ready to serve.",4, 16,17,18,19,"Fruit_Smoothie.png"],
+		  [1, "Fudge Puddles",30, 5, "Preheat oven to 325 degrees F.","Sift together flour, baking soda and salt.","Cream butter, peanut butter and white and brown sugars. Mix in egg and 1/2 teaspoon vanilla. Stir the flour mixture into creamed mixture. Shape the dough into 48 balls, 1 inch each.Place each ball in one compartment of a mini muffin tin.","For filling, put chocolate chips in a double boiler over simmering water. Stir in milk and vanilla, mix well.","Bake for 14 to 16 minutes or until lightly browned. Remove from oven and immediately make wells in the center of each using a melon baller. Cool in pan for 5 minutes. Then carefully remove to wire racks.", 1, 9, "Fudge_Puddles.png"],
+		  [2, "Caesar Salad", 10, 3, "Place salad blend in large bowl and toss with salad dressing", "Divide mixture into two servings. Top with chicken and croutons.", "Sprinkle with cheese. Serve.",5, 20,21,22,23,24, "Caesar_Salad.png" ]
+		  ];
+
+
 
 // find Products page
-function findProducts()
-        {
-            document.getElementById('resultList').innerHTML='';// clear ul resultlist for each search
-	    var product = new RegExp(document.getElementById("productsToSearch").value, 'gi');// product to search
-	    var findElement=false;
-            var li;
-	    var a;
-	    var spanName, spanComment;
-            var root=document.getElementById('resultList');//ul
-            for(var i=0; i<storesArray.length; i++){
-                var storeProducts=storesArray[i];// all the products from one store
-                console.log(storeProducts);
-                if(storeProducts[1].search(product, "i")!=-1){
-		    li=document.createElement('li');
-		    if(i==0){
-			 li.setAttribute('class', 'arrow ui-corner-top');
-		    }
-		    else{
-			if(i==storesArray.length-1)
-			    li.setAttribute('class', 'arrow ui-corner-bottom');
-			else
-			    li.setAttribute('class', 'arrow');
-		    }
-		    
-		    spanComment=document.createElement('p');
-		    findElement=true;
+var ArrayByCriteria=[];
+var optionSelect="BestMatch";// implicit the option is the first value
+
+ function SelectChoice(){
+    optionSelect=$('#select-choice-1 option:selected').val();
+    $('#Option-select-choise').text(optionSelect);// change the option in the span tag 
+   if($('#productsToSearch').val()=="Enter a product")//empty search
+	{
+	    ArrayByCriteria= storesArray.slice();
+	    if(optionSelect=="BestMatch"){
+		ShowAllProducts();
+	    }
+	    if(optionSelect=="Price"){
+		//sort by price
+		ArrayByCriteria.sort(function(a,b){
+		    return a[4]-b[4];	
+		});
+		ShowAllProductsSortByPrice();
+		
+	    }
+	    if(optionSelect=="Featured"){
+		//empty
+	    }
+	}
+	
+    else {
+	findProducts();
+	}  
+    }
+function ShowAllProductsSortByPrice()
+{
+    var li;
+    var a, h3, img, p, div;// h3 for title, img for picture and p for price
+    var src;
+    var path="img/products/";// path to the products image
+   
+    var root=document.getElementById('resultListViewThumbnails');//ul
+    document.getElementById('resultListViewThumbnails').innerHTML='';// clear ul resultlist for each search
+   if(root){
+    
+    for(var i=0; i<ArrayByCriteria.length; i++){
+	var storeProducts=ArrayByCriteria[i];
+	li=document.createElement('li');
+	div=document.createElement('div');// contains a
+	a=document.createElement('a');// contains img, h3, p
+	img=document.createElement('img');
+	h3=document.createElement('h3');
+	p=document.createElement('p');
 		    for(var j=1; j<storeProducts.length; j++){// the first value is the product id
-			    //console.log(storeProducts[1]);
 			    switch(j)
 			    {
 				case 1:
-				    spanName=document.createElement('p');
-				    //spanName.appendChild(document.createTextNode("Name: "));
-				    spanName.appendChild(document.createTextNode(storeProducts[j]));
-				    spanName.setAttribute('class', 'name');
+				    h3.appendChild(document.createTextNode(storeProducts[j]+" "));//product name
 				    break;
                                 case 2:
-				    spanComment.appendChild(document.createTextNode("Size: "));
-				    spanComment.appendChild(document.createTextNode(storeProducts[j]+ ", "));
-				    spanComment.setAttribute('class', 'comment');
-				    break;
-				case 3:
-				    spanComment.appendChild(document.createTextNode("Aisle: "));
-				    spanComment.appendChild(document.createTextNode(storeProducts[j]+ ", "));
-				    spanComment.setAttribute('class', 'comment');
+				    h3.appendChild(document.createTextNode(storeProducts[j]));//product size
 				    break;
 				case 4:
-				    spanComment.appendChild(document.createTextNode("Price: "));
-				    spanComment.appendChild(document.createTextNode(storeProducts[j]+ ", "));
-				    spanComment.setAttribute('class', 'comment');
+			 	    p.appendChild(document.createTextNode("$"+storeProducts[j]));// product price
 				    break;
-				case 5:
-				    spanComment.appendChild(document.createTextNode("Location: "));
-				    spanComment.appendChild(document.createTextNode(storeProducts[j]+ ", "));
-				    spanComment.setAttribute('class', 'comment');
-				    break;
-				case 6:
-				    spanComment.appendChild(document.createTextNode("Shelf: "));
-				    spanComment.appendChild(document.createTextNode(storeProducts[j]+ ", "));
-				    spanComment.setAttribute('class', 'comment');
-				    break;
-                                case 7:
-                                    spanComment.appendChild(document.createTextNode("Category: "));
-				    spanComment.appendChild(document.createTextNode(storeProducts[j]));
-				    spanComment.setAttribute('class', 'comment');
-				    break;
+				case 8:
+				    src="";
+				    src=path+storeProducts[j];
+				    img.setAttribute('src', src);
+				    break
 			    }// end switch
 			}// end for
+	a.appendChild(img);
+	a.appendChild(h3);
+	a.appendChild(p);
+	
+	a.setAttribute('class', 'ui-link-inherit');
+	img.setAttribute('class', 'ui-li-thumb');
+	h3.setAttribute('class', 'ui-li-heading');
+	p.setAttribute('class', 'ui-li-desc');
+	
+	div.appendChild(a);
+	div.setAttribute('class', 'ui-btn-text ui-btn-inner ui-li');
+	
+	li.setAttribute('id', storeProducts[0]);
+	li.setAttribute('onClick', "Javascript: ShowProductDetails(this, id);");// when click on a product id
+	li.setAttribute('class', 'ui-btn ui-btn-icon-right-list-view ui-li ui-li-has-thumb ui-btn-up-c');
+	li.appendChild(div);
+	root.appendChild(li);
+	root.setAttribute('class', 'ui-listview');//ul
+	document.getElementById('divresultListViewThumbnails').style.display="block" ;
+	$('#divresultListViewThumbnails').addClass('ui-shadow');
+	onCompletion();
+    }// end for products
+    }// end if root
+}
+function ShowAllProducts(){
+    var li;
+    var a, h3, img, p, div;// h3 for title, img for picture and p for price
+    var src;
+    var path="img/products/";// path to the products image
+   
+    var root=document.getElementById('resultListViewThumbnails');//ul
+   if(root){
+    document.getElementById('resultListViewThumbnails').innerHTML='';// clear ul resultlist for each search
+    for(var i=0; i<storesArray.length; i++){
+	var storeProducts=storesArray[i];
+	li=document.createElement('li');
+	div=document.createElement('div');// contains a
+	a=document.createElement('a');// contains img, h3, p
+	img=document.createElement('img');
+	h3=document.createElement('h3');
+	p=document.createElement('p');
+		    for(var j=1; j<storeProducts.length; j++){// the first value is the product id
+			    switch(j)
+			    {
+				case 1:
+				    h3.appendChild(document.createTextNode(storeProducts[j]+" "));//product name
+				    break;
+                                case 2:
+				    h3.appendChild(document.createTextNode(storeProducts[j]));//product size
+				    break;
+				case 4:
+			 	    p.appendChild(document.createTextNode("$"+storeProducts[j]));// product price
+				    break;
+				case 8:
+				    src="";
+				    src=path+storeProducts[j];
+				    img.setAttribute('src', src);
+				    break
+			    }// end switch
+			}// end for
+	a.appendChild(img);
+	a.appendChild(h3);
+	a.appendChild(p);
+	
+	a.setAttribute('class', 'ui-link-inherit');
+	img.setAttribute('class', 'ui-li-thumb');
+	h3.setAttribute('class', 'ui-li-heading');
+	p.setAttribute('class', 'ui-li-desc');
+	
+	div.appendChild(a);
+	div.setAttribute('class', 'ui-btn-text ui-btn-inner ui-li');
+	
+	li.setAttribute('id', storeProducts[0]);
+	li.setAttribute('onClick', "Javascript: ShowProductDetails(this, id);");// when click on a product id
+	li.setAttribute('class', 'ui-btn ui-btn-icon-right-list-view ui-li ui-li-has-thumb ui-btn-up-c');
+	li.appendChild(div);
+	root.appendChild(li);
+	root.setAttribute('class', 'ui-listview');//ul
+	document.getElementById('divresultListViewThumbnails').style.display="block" ;
+	$('#divresultListViewThumbnails').addClass('ui-shadow');
+	onCompletion();
+    }// end for products
+    }// end if root
+	    
+}
+
+
+function findProducts()
+        {
+            document.getElementById('resultListViewThumbnails').innerHTML='';// clear ul resultlist for each search
+	    var product = new RegExp(document.getElementById("productsToSearch").value, 'gi');// product to search
+	    var findElement=false;
+            var li;
+	    var a, h3, img, p, div;// h3 for title, img for picture and p for price
+	    var src;
+	    var path="img/products/";// path to the products image
+            var root=document.getElementById('resultListViewThumbnails');//ul
+	    
+	    var ArrayBySearch=[];//array after search products
+	    for(var i=0; i<storesArray.length; i++){
+		var storeProducts=storesArray[i];// all the products from one store
+		if(storeProducts[1].search(product, "i")!=-1){
+		    findElement=true;
+		    ArrayBySearch.push(storeProducts);
 			    
-			    li.appendChild(spanName);
-			    li.appendChild(spanComment);
-			    root.appendChild(li);
-			    root.setAttribute('class', 'Find');//ul
-			    //root.setAttribute('class', 'corner-radius');
-			    document.getElementById('divresultList').style.display="block" ;
-			    onCompletion();
-		}// end if
-            }// end for
+		}
+	    }
+	    if(optionSelect=="BestMatch"){
+		//sort by id
+		ArrayBySearch.sort(function(a,b){
+		    return a[0]-b[0];	
+		});
+		for(var i=0; i<ArrayBySearch.length; i++){// array of products found
+			var productFound=ArrayBySearch[i];
+			li=document.createElement('li');
+			div=document.createElement('div');// contains a
+			a=document.createElement('a');// contains img, h3, p
+			img=document.createElement('img');
+			h3=document.createElement('h3');
+			p=document.createElement('p');
+			for(var j=0; j<productFound.length; j++){
+			    switch(j)
+				{
+				    case 1:
+					h3.appendChild(document.createTextNode(productFound[j]+" "));//product name
+					break;
+				    case 2:
+					h3.appendChild(document.createTextNode(productFound[j]));//product size
+					break;
+				    case 4:
+					p.appendChild(document.createTextNode("$ "+productFound[j]));// product price
+					break;
+				    case 8:
+					src="";
+					src=path+productFound[j];
+					img.setAttribute('src', src);
+					break
+				}// end switch
+			}//end for product
+		    a.appendChild(img);
+		    a.appendChild(h3);
+		    a.appendChild(p);
+				
+		    a.setAttribute('class', 'ui-link-inherit');
+		    img.setAttribute('class', 'ui-li-thumb');
+		    h3.setAttribute('class', 'ui-li-heading');
+		    p.setAttribute('class', 'ui-li-desc');
+				
+		    div.appendChild(a);
+		    div.setAttribute('class', 'ui-btn-text ui-btn-inner ui-li');
+				
+		    li.setAttribute('id', productFound[0]);
+		    li.setAttribute('onClick', "Javascript: ShowProductDetails(this, id);");// when click on a product id
+		    li.setAttribute('class', 'ui-btn ui-btn-icon-right-list-view ui-li ui-li-has-thumb ui-btn-up-c');
+		    li.appendChild(div);
+		    root.appendChild(li);
+		    root.setAttribute('class', 'ui-listview');//ul
+		    document.getElementById('divresultListViewThumbnails').style.display="block" ;
+		    $('#divresultListViewThumbnails').addClass('ui-shadow');
+		    onCompletion();
+		    }
+	    }//end if select option
+	    else{
+		if(optionSelect=="Price"){
+		    document.getElementById('resultListViewThumbnails').innerHTML='';// clear ul resultlist for each option change
+		    		    
+		    ArrayBySearch.sort(function(a,b){
+			return a[4]-b[4];	
+		    });
+		    
+		    for(var i=0; i<ArrayBySearch.length; i++){// array of products found
+			var productFound=ArrayBySearch[i];
+			li=document.createElement('li');
+			div=document.createElement('div');// contains a
+			a=document.createElement('a');// contains img, h3, p
+			img=document.createElement('img');
+			h3=document.createElement('h3');
+			p=document.createElement('p');
+			for(var j=0; j<productFound.length; j++){
+			    switch(j)
+				{
+				    case 1:
+					h3.appendChild(document.createTextNode(productFound[j]+" "));//product name
+					break;
+				    case 2:
+					h3.appendChild(document.createTextNode(productFound[j]));//product size
+					break;
+				    case 4:
+					p.appendChild(document.createTextNode("$ "+productFound[j]));// product price
+					break;
+				    case 8:
+					src="";
+					src=path+productFound[j];
+					img.setAttribute('src', src);
+					break
+				}// end switch
+			}//end for product
+		    a.appendChild(img);
+		    a.appendChild(h3);
+		    a.appendChild(p);
+				
+		    a.setAttribute('class', 'ui-link-inherit');
+		    img.setAttribute('class', 'ui-li-thumb');
+		    h3.setAttribute('class', 'ui-li-heading');
+		    p.setAttribute('class', 'ui-li-desc');
+				
+		    div.appendChild(a);
+		    div.setAttribute('class', 'ui-btn-text ui-btn-inner ui-li');
+				
+		    li.setAttribute('id', productFound[0]);
+		    li.setAttribute('onClick', "Javascript: ShowProductDetails(this, id);");// when click on a product id
+		    li.setAttribute('class', 'ui-btn ui-btn-icon-right-list-view ui-li ui-li-has-thumb ui-btn-up-c');
+		    li.appendChild(div);
+		    root.appendChild(li);
+		    root.setAttribute('class', 'ui-listview');//ul
+		    document.getElementById('divresultListViewThumbnails').style.display="block" ;
+		    $('#divresultListViewThumbnails').addClass('ui-shadow');
+		    onCompletion();
+		    }
+		}
+		else{
+		    //Featured selected
+		    
+		}
+	    }
             if(findElement!=true)
             {
+		 // Wait for PhoneGap to load
+	        document.addEventListener("deviceready", onDeviceReady, false);
+
+		// PhoneGap is ready
+		function onDeviceReady() {
+		    //empty
+		}
+		    
+		if((PhoneGap.queue.ready||PhoneGap.available)&& navigator.notification){
+		     navigator.notification.alert(
+		    'Product not found',  // message
+		    'Notification',       // title
+		    'OK'                  // buttonName
+		    );
+		   }
+		else{ 
                 alert("No product was found");
+		}
+		
+		
             }
             
         }
+	
+function ShowProductDetails(e, liID){// liId is product id
+   
+    var src, path="img/products/large/";// path to the products image
+    $('#resultListViewThumbnails').empty();
+    $('#divresultListViewThumbnails').css('display', 'none');
+    $('#ShowProductDetailsPage').css('display', 'block');
+    $('img.logo').css('display', 'none');// hide the left image
+    $('#SchoppingCartIcon').css('display', 'block');
+    $('#leftButton').css('display', 'block');// show the back button
+    $('h1').text("Product Details");
+    $('#BestMatchBar').css('display', 'none');
+    $('#searchbar').css('display', 'none');
+    $('#content').height($("#container").height()-$("#Toolbar").height());
+     
+    
+    for(var i=0; i<storesArray.length; i++){
+	var productFound=storesArray[i];
+	if(productFound[0]==liID){
+	    $('#title').text(productFound[1]+ " " +productFound[2]);
+	    src="";
+	    src=path+productFound[8];
+	    $('#ProductImage').attr('src', src);
+	    $('#ProductPrice').text("$ "+productFound[4]);//product price
+	    
+	    $('#AddtoList').attr('value', liID);
+	    $('#AddtoList').attr('onclick', "Javascript: SaveProductIntoDatabase(value);");// when click on a product id
+	}
+    }
+    onCompletion();
+    myScroll.scrollTo(0,0,0);
+    
+}
+function SaveProductIntoDatabase(value){
+    
+    //alert("the value is"+ value);
+    var name, category, price;
+    
+    
+    //save the product in the table
+	     for(var i=0; i<storesArray.length; i++){
+		var storeProducts=storesArray[i];// all the products
+		    if(storeProducts[0]==parseInt(value))
+		    {
+			
+			 
+			name=storeProducts[1];
+			category=storeProducts[7];
+			price= storeProducts[4];
+			db.transaction(
+			    function(transaction) {
+				transaction.executeSql(
+				    'INSERT INTO ProductsToBuy(IdProduct, ProductName, CategoryName, Price) VALUES (?, ?, ?, ?);',[value, name , category, price],
+				    function(){
+					
+					$('#AddtoList').addClass('active-add-to-list-htc');
+				    }
+				    ,
+				    errorHandler
+				);
+			    }
+			);
+			 
+		    }
+		
+	     }
+}
+function backButtonFindProducts(){
+    var url='findProducts.html';
+    var findUrl, filename, i1, i2;
+    loadPage(url);
+    var link=document.getElementsByTagName('a');
+    for(var i=0; i<link.length; i++){
+	filename=link[i].href;
+	findUrl=filename.substring(filename.lastIndexOf('/')+1);
+	if(url==findUrl){
+	    
+	    i1=$(link[i]).children();
+	    i2=$(i1).children();
+	    $(i2).addClass('iactivelink');// make the icon blue
+	}
+    }
+}
 // Shopping list page
 //show category list
 function ShowProductsByCategory(){
@@ -214,7 +515,6 @@ function ShowProductsByCategory(){
            CategoryArray.push(storeProducts[7]);// add the category to the category array
         }
     }
-    //console.log(CategoryArray);
    // put the categories on screen
     if(root!=null){
         for(var i=0; i<CategoryArray.length; i++){
@@ -222,8 +522,6 @@ function ShowProductsByCategory(){
           aLink=document.createElement('p');
           aLink.appendChild(document.createTextNode(CategoryArray[i]));
           li.setAttribute('id', CategoryArray[i]);
-          //li.setAttribute('onClick', "Javascript: window.location.href = 'ItemShoppingList.html'; ShowItemsFromCategory(CategoryArray[i]);");// when click on a category
-           //li.setAttribute('onClick', "Javascript: window.location.href = 'ItemShoppingList.html'");// when click on a category
 	  li.setAttribute('onClick', "Javascript: ShowItemsFromCategory(this, id);");// when click on a category id=category name
           li.setAttribute('class', 'arrow');
           li.appendChild(aLink);
@@ -240,7 +538,9 @@ function ShowItemsFromCategory(e, liID){// liID is the category name
     var p;
     var root=document.getElementById('Category');// ul
     $('#Category').empty();
-    //alert("category id is "+ liID); 
+    $('img.logo').css('display', 'none');// hide the left image
+    $('#leftButton').css('display', 'block');// show the back button
+   
     
      for(var i=0; i<storesArray.length; i++){
         var storeProducts=storesArray[i];// all the products
@@ -256,42 +556,17 @@ function ShowItemsFromCategory(e, liID){// liID is the category name
                     
 		    var cb = document.createElement( "input" );
                     cb.type = "checkbox";
-                    //cb.value = storeProducts[0];// product id
 		    cb.setAttribute('value', storeProducts[0]);
 		    cb.setAttribute('onClick', 'SaveItemIntoDatabase(this, value)');
 		    cb.setAttribute('style', 'margin:11px 0 0 7px;');
-                    //cb.checked = true;
                      p = document.createTextNode(" "+ storeProducts[1]);
                     li.appendChild( cb );
                     li.appendChild( p );
                     root.appendChild(li);
-		    
-		    
                 }//end if
-            
             }// end if
         }// end for
     ShowAllItemsChecked();
-    
-    // 
-    //var myScroll; 
-    //        function loaded() { 
-    //            myScroll = new iScroll('content'); 
-    //        } 
-    //        document.addEventListener('DOMContentLoaded', function() 
-    //            { setTimeout(loaded,500);}, false); 
-    
-   
-//	    var input = document.getElementsByTagName('input'); 
-//            if (input) {
-//		//alert("there are inputs" + input.length);
-//                for (var i=0; i<input.length; i++) { 
-//		    input[i].addEventListener('touchstart', function(e) {
-//			//alert("e.stopPropagation();");
-//			e.stopPropagation(); 
-//		    }, false);
-//		}
-//            }
 	var input = document.getElementsByTagName('input'); 
             if (input) {
 		//alert("there are inputs" + input.length);
@@ -305,8 +580,25 @@ function ShowItemsFromCategory(e, liID){// liID is the category name
 		}
             } 
      onCompletion();  // myScroll.refresh()    
-    
 }// end function
+
+function backButtonShoppingList(){
+    var url='shoppingList.html';
+    var findUrl, filename, i1, i2;
+    loadPage(url);
+    var link=document.getElementsByTagName('a');
+    for(var i=0; i<link.length; i++){
+	filename=link[i].href;
+	findUrl=filename.substring(filename.lastIndexOf('/')+1);
+	if(url==findUrl){
+	    
+	    i1=$(link[i]).children();
+	    i2=$(i1).children();
+	    $(i2).addClass('iactivelink');// make the icon blue
+	}
+    }
+}
+
 
 var db;
 function connect_db(){
@@ -342,81 +634,11 @@ function connect_db(){
 // the click can be to check or uncheck the checkbox
 function SaveItemIntoDatabase(e, ID)// ID is the product id
 {
-    //alert("ID is" + ID);
     var name, category, price;
-    //if(connect_db()==true){
-    // in browser
-	//if($('input[value='+ID+']').attr('checked')==true)
-	//
-	//{
-	//    
-	//    //save the product in the table
-	//     for(var i=0; i<storesArray.length; i++){
-	//	var storeProducts=storesArray[i];// all the products
-	//	    if(storeProducts[0]==parseInt(ID))
-	//	    {
-	//		alert("in");
-	//		name=storeProducts[1];
-	//		category=storeProducts[7];
-	//		price= storeProducts[4];
-	//		//db.transaction(
-	//		//    function(transaction) {
-	//		//	transaction.executeSql(
-	//		//	    'INSERT INTO ProductsToBuy(IdProduct, ProductName, CategoryName, Price) VALUES (?, ?, ?, ?);',[ID, name , category, price],
-	//		//	    function(){
-	//		//		//refreshEntries();
-	//		//		console.log("Data saved");
-	//		//	    },
-	//		//	    errorHandler
-	//		//	);
-	//		//    }
-	//		//);
-	//		db.transaction(
-	//		    function(transaction) {
-	//			transaction.executeSql(
-	//			    'INSERT INTO ProductsToBuy(IdProduct, ProductName, CategoryName, Price) VALUES (?, ?, ?, ?);',[ID, name , category, price],
-	//			    null,
-	//			    errorHandler
-	//			);
-	//		    }
-	//		);
-	//	    }
-	//	
-	//     }
-	//    
-	//}
-	//else
-	//{
-	//    //delete the product from table
-	////    db.transaction(
-	////	function(transaction) {
-	////	    transaction.executeSql(
-	////		'DELETE FROM ProductsToBuy WHERE IdProduct=? ;',[parseInt(ID)],
-	////		     function(){
-	////			//refreshEntries();
-	////			console.log("Data deleted");
-	////		     },
-	////			 errorHandler
-	////		);
-	////	    }
-	////    );
-	//db.transaction(
-	//	function(transaction) {
-	//	    transaction.executeSql(
-	//		'DELETE FROM ProductsToBuy WHERE IdProduct=? ;',[parseInt(ID)],null ,
-	//			 errorHandler
-	//		);
-	//	    }
-	//    );
-	//    
-	//}
-    //}
-// in iPhone
+    
 //if the checkbox isn't checked
-if($('input[value='+ID+']').attr('checked')!=true)
-	
+if($('input[value='+ID+']').prop('checked')!=true)
 	{
-	    
 	    //save the product in the table
 	     for(var i=0; i<storesArray.length; i++){
 		var storeProducts=storesArray[i];// all the products
@@ -432,32 +654,20 @@ if($('input[value='+ID+']').attr('checked')!=true)
 				transaction.executeSql(
 				    'INSERT INTO ProductsToBuy(IdProduct, ProductName, CategoryName, Price) VALUES (?, ?, ?, ?);',[ID, name , category, price],
 				    function(){
-					//refreshEntries();
 					//alert("Data saved");
-					
 					$('input[value='+ID+']').attr('checked','checked');// check the checkbox
 				    },
 				    errorHandler
 				);
 			    }
 			);
-			//db.transaction(
-			//    function(transaction) {
-			//	transaction.executeSql(
-			//	    'INSERT INTO ProductsToBuy(IdProduct, ProductName, CategoryName, Price) VALUES (?, ?, ?, ?);',[ID, name , category, price],
-			//	    null,
-			//	    errorHandler
-			//	);
-			//    }
-			//);
+			 
 		    }
 		
 	     }
-	    
 	}
 	else
 	{
-	    
 	    //delete the product from table
 	    db.transaction(
 		function(transaction) {
@@ -472,17 +682,7 @@ if($('input[value='+ID+']').attr('checked')!=true)
 			);
 		    }
 	    );
-	//db.transaction(
-	//	function(transaction) {
-	//	    transaction.executeSql(
-	//		'DELETE FROM ProductsToBuy WHERE IdProduct=? ;',[parseInt(ID)],null ,
-	//			 errorHandler
-	//		);
-	//	    }
-	//    );
-	    
 	}
-    
 }
 function errorHandler(transaction, error) {
     alert('Oops. Error was '+error.message+' (Code '+error.code+')');
@@ -491,7 +691,6 @@ function errorHandler(transaction, error) {
 
 function ShowAllItemsChecked()
 {
-    //if(connect_db()==true){
 	db.transaction(
 	function(transaction) {
 	   transaction.executeSql(
@@ -510,78 +709,8 @@ function ShowAllItemsChecked()
 		);
 	    }
 	);
-    //}
-    
 }
-
-//function findShoppingProducts() {
-//		var li;
-//		var aLink;
-//		var root=document.getElementById('Category');// ul
-//		if(root!=null){
-//                    for(var i=0; i<storesArray.length; i++){
-//                        var storeProducts=storesArray[i];// all the products
-//                        //console.log(storeProducts);
-//                        li=document.createElement('li');
-//                        aLink=document.createElement('a');
-//                        aLink.setAttribute('href', '#');
-//                        //aLink.setAttribute('target', '_self');
-//                        li.setAttribute('class', 'arrow');
-//                        li.setAttribute('id', storeProducts[0]);
-//                        aLink.appendChild(document.createTextNode(storeProducts[1]));
-//                        li.appendChild(aLink);
-//                        li.setAttribute('onClick', "Javascript: AddToShoppingList(this, id);");// the price of a product
-//                        //li.setAttribute('onClick', "Javascript: window.location.href = 'shoppingCart.html';");// when click on a product the Shopping Cart page is loaded
-//                        root.appendChild(li);
-//                    }// end for
-//                }//end if
-//		
-//		if(parseFloat(sessionStorage.ShoppingCart)==0){
-//                    $('#box').text('Empty Shopping Cart');
-//		    //document.getElementById("box").innerHTML="Empty Shopping Cart";
-//		}
-//	    }
-//	    
-//function AddToShoppingList(e, liID)
-//    {
-//    console.log("On click index "+ liID);
-//	for(var i=0; i<storesArray.length; i++){
-//	    var storeProducts=storesArray[i];// all the products
-//                if(liID==storeProducts[0]){
-//		    ShoppingCart+=storeProducts[4];
-//		}
-//	}
-//    sessionStorage.ShoppingCart=ShoppingCart;
-//    console.log("sessionStorage.ShoppingCart"+ sessionStorage.ShoppingCart);
-//    //document.getElementById("box").innerHTML="Total amount payable: "+ShoppingCart.toFixed(2);
-//		
-//    if(parseFloat(sessionStorage.ShoppingCart)==0){
-//	 document.getElementById("box").innerHTML="Empty Shopping Cart";
-//    }
-//    else{
-//	 document.getElementById("box").innerHTML="Total amount payable: "+parseFloat(ShoppingCart).toFixed(2);
-//    }
-//		
-//		//console.log("Sum to pay: " + ShoppingCart);
-//		//console.log("Sum to pay: " + document.getElementById("box").innerHTML);
-//}
-//// end shopping list page
-
-//store locator page- google map
-//function detectBrowser() {
-//		var useragent = navigator.userAgent;
-//		var mapdiv = document.getElementById("map_canvas");
-//		  
-//		if (useragent.indexOf('iPhone') != -1 || useragent.indexOf('Android') != -1 ) {
-//		    mapdiv.style.width = '100%';
-//		    mapdiv.style.height = '100%';
-//		} else {
-//		   
-//		    mapdiv.style.width = '600px';
-//		    mapdiv.style.height = '800px';
-//		}
-//	    }
-//	   
+   
 	var map;
 	var geocoder;
 	var markersArray = [
@@ -599,8 +728,6 @@ function ShowAllItemsChecked()
 
 	    function initialize() {
 		var newyork = new google.maps.LatLng(40.69847032728747, -73.9514422416687);
-		//connect_db();// connect to database
-		//refreshEntries();// show all the store from te database
 		geocoder = new google.maps.Geocoder();
                 var myOptions = {
                     zoomControl: true,
@@ -612,43 +739,10 @@ function ShowAllItemsChecked()
                     map = new google.maps.Map(element,myOptions);
                     map.setCenter(newyork);// set center to New York
                     show_Marker(map, markersArray);// put the stores on the map   
-                    //google.maps.event.addListener(map, 'click', function(event){addMarker(event.latLng);});// add marker on the screen
                 }// end if
 	   
 	 }// end initialize()   
 
-	 //on click on the screen add a marker
-	 function addMarker(location) {
-		marker = new google.maps.Marker({
-		  position: location,
-		  map: map
-		  //title: 'Some title';
-		});
-		marker.setTitle("New Store in town");
-		attachSecretMessage(marker,"This store is a new one");
-		markersArray.push(marker);
-		console.log(markersArray);
-		//localStorage.markersArray= markersArray;
-	      }// end addMarker
-	
-	// Shows any overlays currently in the array(markers)
-	function showOverlays() {
-	  if (markersArray) {
-	    for (i in markersArray) {
-	      markersArray[i].setMap(map);
-	    }
-	  }
-	}
-	
-	// Deletes all markers in the array by removing references to them
-	function deleteOverlays() {
-	  if (markersArray) {
-	    for (i in markersArray) {
-	      markersArray[i].setMap(null);
-	    }
-	    markersArray.length = 0;
-	  }
-	}
 	      
 	//add a description for the store
 	    function attachSecretMessage(marker, message) {
@@ -682,7 +776,6 @@ function ShowAllItemsChecked()
     function findAddress() {
     document.getElementById('MarkersList').style.display='none';
     document.getElementById('map_canvas').style.display='block';
-    //document.getElementById('map_canvas').style.top=0+'px';
     var address = document.getElementById("address").value;
     var findElement=false;
     
@@ -691,12 +784,8 @@ function ShowAllItemsChecked()
 	for (var i=0; i<markersArray.length; i++)
 	    {
 		var store=markersArray[i];
-		//console.log(store);
 		var myLatLng = new google.maps.LatLng(store[1], store[2]);
-		//console.log("vector: "+ myLatLng);
-		//console.log("gasite in urma cautarii"+results[0].geometry.location.lat());
 		if(results[0].geometry.location.lat()==parseFloat(store[1])&& results[0].geometry.location.lng()==parseFloat(store[2])){
-		    //console.log("gasit");
 		    findElement=true;
 		    map.setCenter(results[0].geometry.location);
 		    var marker = new google.maps.Marker({
@@ -723,7 +812,6 @@ function ShowAllItemsChecked()
     var p;
     var root=document.getElementById('MarkersList');
     document.getElementById('MarkersList').innerHTML='';
-   //document.getElementById('MarkersList').style.top=0+'px';// scroll top of the page when switch between map view and list view 
     document.getElementById('MarkersList').style.display='block';// ul
     li=document.createElement('li');
     p=document.createElement('p');
@@ -759,3 +847,182 @@ function ShowAllItemsChecked()
     }//end if
     
   }
+  
+//Recipes page
+function recipesList(){
+    var li, aLink;
+    var root=document.getElementById('Recipes');// ul
+    if(root){
+	for(var i=0; i<recipesArray.length; i++){
+	    var recipe=recipesArray[i];
+	      li=document.createElement('li');
+	      aLink=document.createElement('p');
+	      aLink.appendChild(document.createTextNode(recipe[1]));
+	      li.setAttribute('id', recipe[0]);
+	      li.setAttribute('onClick', "Javascript: ShowRecipeDetails(this, id);");// when click on a recipe id
+	      li.setAttribute('class', 'arrow');
+	      li.appendChild(aLink);
+	      root.appendChild(li);
+	}// end for
+	onCompletion();
+    }
+}
+function ShowRecipeDetails(e, liID){//liID is the recipe id
+    var li,ol, ul ;
+    var p, steps, ingredients,oz;
+    var title;
+    var root=document.getElementById('detailsView');
+    
+    var src="img/";
+    $('#Recipes').empty();
+    $('#Recipes').css('display', 'none');
+    $('img.logo').css('display', 'none');// hide the left image
+    $('#detailsView').css('display', 'block');
+    $('#leftButton').css('display', 'block');// show the back button
+    
+     for(var i=0; i<recipesArray.length; i++){
+        var recipe=recipesArray[i];// one recipe
+            if(liID==recipe[0]){
+                if(root!=null){
+		    //Add Steps
+		    var olRoot=document.getElementById('Steps');
+		    $('h1').text(recipe[1]);
+		    $('.button').css('display', 'inline');
+		    $('#title').text(recipe[1]);
+		    $('#subtitle').text("Total Time - " +recipe[2]+ " Minutes");
+		    
+		    src+=recipe[recipe.length-1];
+		    $('#recipeImage').attr('src',src);
+		    
+		    steps=recipe[3];
+		    ol=document.createElement('ol');
+		    ol.setAttribute('type', '1');
+		    $(ol).css('padding-left', '30px');
+		    for(var j=4; j<(4+steps); j++){
+			li=document.createElement('li');
+			p=document.createElement('p');
+			p.appendChild(document.createTextNode(recipe[j]));
+			li.appendChild(p);
+			ol.appendChild(li);
+		    }
+		    olRoot.appendChild(ol);
+		    
+		    //Add Ingredients
+		    var ulRoot=document.getElementById('Ingredients');
+		    ingredients=recipe[4+steps];
+		    ul=document.createElement('ul');
+		    ul.setAttribute('class', 'Category');
+		    for(var j=(4+steps+1); j<(4+steps+1+ingredients); j++){
+			var indexProduct=recipe[j];
+			for(var k=0; k<storesArray.length; k++){
+			    var product=storesArray[k];
+			    if(indexProduct==product[0]){
+				li=document.createElement('li');
+				li.setAttribute('class', 'simplearrow');
+				li.setAttribute('value', product[0]);
+				li.setAttribute('onClick', 'SaveItemIntoDatabase(this, value)');
+				p=document.createElement('p');
+				oz=document.createElement('p');
+				var cb = document.createElement( "input" );
+				cb.type = "checkbox";
+                   
+				cb.setAttribute('value', product[0]);// product id
+				cb.setAttribute('onClick', 'SaveItemIntoDatabase(this, value)');
+				cb.setAttribute('style', 'margin:5px 0 0 7px;');
+				//product's name
+				p.appendChild(document.createTextNode(" "+product[1]));
+				
+				//product's oz
+				oz.appendChild(document.createTextNode(" "+product[2]));
+				oz.setAttribute('style', 'margin: 0px 0px 0px 30px;  font-size: 15px; display: block; ');
+				
+				li.appendChild( cb );
+				li.appendChild(p);
+				li.appendChild(oz);
+				ul.appendChild(li);
+			    }
+			}
+		    }
+		    ulRoot.appendChild(ul);
+		}
+	    }//end if liID
+    onCompletion();// refresh iScroll
+     }//end for
+     
+    var input = document.getElementsByTagName('input'); 
+            if (input) {
+		//alert("there are inputs" + input.length);
+                for (var i=0; i<input.length; i++) { 
+		    input[i].addEventListener('touchstart', function(e){
+			
+			//alert("this is "+ this.value);
+			SaveItemIntoDatabase(this, this.value);
+			e.stopPropagation(); 
+		    }, false);
+		}
+            }
+    ShowAllItemsChecked();
+}// end function
+
+// add all ingredients to the shopping list
+function Addall(){
+    var input = document.getElementsByTagName('input');
+    var value, name, category, price;
+    var toSaveArray=[];
+    if (input) {
+        for (var i=0; i<input.length; i++) {
+	   value=parseInt(input[i].value);
+	   if($('input[value='+value+']').attr('checked')!=true){
+		toSaveArray.push(value);
+	   }// end if
+	}//end for
+	for(var i=0;i<toSaveArray.length; i++){
+	    Save(toSaveArray[i]);
+	}//end for
+    }//end if
+}
+function Save(ID){
+     //save the product in the table
+	     for(var i=0; i<storesArray.length; i++){
+		var storeProducts=storesArray[i];// all the products
+		    if(storeProducts[0]==parseInt(ID))
+		    {
+			
+			 
+			name=storeProducts[1];
+			category=storeProducts[7];
+			price= storeProducts[4];
+			db.transaction(
+			    function(transaction) {
+				transaction.executeSql(
+				    'INSERT INTO ProductsToBuy(IdProduct, ProductName, CategoryName, Price) VALUES (?, ?, ?, ?);',[ID, name , category, price],
+				    function(){
+					//alert("Data saved");
+					$('input[value='+ID+']').attr('checked','checked');// check the checkbox
+				    },
+				    errorHandler
+				);
+			    }
+			);
+			
+		    }
+	     }
+}
+
+function backButton(){
+    var url='recipes.html';
+    var findUrl, filename, i1, i2;
+    loadPage(url);
+    var link=document.getElementsByTagName('a');
+    for(var i=0; i<link.length; i++){
+	filename=link[i].href;
+	findUrl=filename.substring(filename.lastIndexOf('/')+1);
+	if(url==findUrl){
+	    
+	    i1=$(link[i]).children();
+	    i2=$(i1).children();
+	    $(i2).addClass('iactivelink');// make the icon blue
+	}
+    }
+    
+}

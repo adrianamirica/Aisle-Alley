@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    </head>
+ 
+    <body> 
+        <div id="container">
+	    <div class="toolbar" id="Toolbar">
+		<h1>Recipes</h1>
+		<img src="img/AA_top_bar_icon.png" alt="Logo" class="logo">
+		<a class="button" onclick="Addall();" style="display:none;" id="AddAll">Add all</a>
+		<a class="leftButton" onclick="backButton();" style="display:none;" id="leftButton">Recipes</a>
+	    </div><!--End of toolbar -->
+            
+	    <div id="content" >
+		<div>
+		    <ul class="Category" id="Recipes">
+		    </ul>
+		    <div id="detailsView" style="display:none">
+			<div >
+			    <div style="display:inline; float:left; margin-top: 10px; margin-left:10px;">
+				<img id="titleImage" src="img/AA_app_ICON.png" />
+				<p id="title"></p>
+				<p id="subtitle"> </p>
+			    </div>
+			    
+			    <div style="display:inline; float:right; margin-top: 10px; margin-right:10px;">
+				<img id="recipeImage" width="100px" height="100px" />
+			    </div>
+			</div>
+			<div class="clearfix"></div>
+			
+			<div id="Steps" class="Steps corner-radius">
+			    <p> Steps </p>
+			    <!--<ol>
+			       <li>d</li>
+			       
+			    </ol>-->
+			   
+			</div>
+			<div id="Ingredients">
+			    <p class="ingredientsBar">Ingredients</p>
+			</div>
+		    </div><!-- end div id detailsView-->
+		</div>
+	    </div><!-- end div id content-->
+	    
+	</div> <!-- end div id container-->
+    </body>
+</html>

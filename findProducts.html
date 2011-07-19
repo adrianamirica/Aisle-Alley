@@ -1,15 +1,6 @@
 <!DOCTYPE html>
 <html>
     <head>
-         <!--<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />-->
-        <meta name="viewport" content="width=device-width; height=device-height; initial-scale=1.0; maximum-scale=1.0; user-scalable=no">
-        <!--<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>-->
-        <meta name="apple-mobile-web-app-capable" content="yes">
-        <meta name="apple-mobile-web-app-status-bar-style" content="default">
-	    
-        <link type="text/css" rel="stylesheet" href="style.css">
-        <title>Aisle Alley</title>
-        
     </head>
     <body>
         
@@ -17,60 +8,131 @@
 	    <div class="toolbar" id="Toolbar">
 		<h1> Find Products</h1>
 		<img src="img/AA_top_bar_icon.png" alt="Logo" class="logo">
+		<a class="leftButton" onclick="backButtonFindProducts();" style="display:none;" id="leftButton">Products</a>
+		<img src="img/icon-Shopping-cart.png" id="SchoppingCartIcon" style="display:none;" class="Shopping-cart-icon">
 	    </div><!--End of toolbar -->
 	    <div class="searchbar" id="searchbar">
 		<div class="ui-input-search ui-icon-searchfield " id="divproductsToSearch">
 		    <input  id="productsToSearch" value="Enter a product"
-			   onclick="this.value='';" onfocus="this.select()" onblur="this.value=!this.value?'Enter a product':this.value;" />
-		    <!--<a class="search" onclick="findProducts()" >Search</a>-->
-		    <!--<a class="search" href="#">Search</a>-->
+			   onclick="this.value='';" onfocus="this.select()" onblur="this.value=!this.value?'Enter a product':this.value;" onkeyup="findProducts()"/>
 		</div>
-		<a class="search" onclick="findProducts()" >Search</a>
+		<!--<a class="search" >Barcode</a>-->
 	    </div>
 	   
-	    <div id="content" style="height:250px">
-		<div id="divresultList" class="ui-shadow" style="display: none;">
+	    <div  id="BestMatchBar" class="ui-body ui-br" >
+			<div class="ui-btn-text ui-btn ui-btn-icon-right ui-btn-corner-all ui-shadow ui-btn-up-c" style="height: 27px;">
+			    <span id="Option-select-choise" class="select-choice-text">Best Match</span>
+			    <span class="ui-icon ui-icon-arrow-d ui-icon-shadow"></span>
+			    <select class="select-choice" id="select-choice-1" onchange="SelectChoice();" >
+				    <option value="BestMatch">Best Match</option>
+				    <option value="Featured">Featured</option>
+				    <option value="Price">Price</option>
+				   
+			    </select>
+			</div>
+	    </div><!--BestMatchBar-->
+	   
+	   
+	    <div id="content" style="height:250px" >
+		<div>
+		    <div id="divresultListViewThumbnails" class="ui-shadow">
+			<ul id="resultListViewThumbnails" class="ui-listview">
+			    <!--<li class="ui-btn ui-btn-icon-right-list-view ui-li ui-li-has-thumb ui-btn-up-c">
+				<div class="ui-btn-text ui-btn-inner ui-li">
+				    <a class="ui-link-inherit">
+					<img src="" class="ui-li-thumb" />
+					<h3 class="ui-li-heading"></h3>
+					<p class="ui-li-desc"></p>
+				    </a>
+				</div>
+			    </li>-->
+			</ul>
+		    </div>
 		    
-		    <ul id="resultList">
+		    <!--<div id="divresultList" class="ui-shadow" style="display: none;">-->
+		    <!--<div id="divresultList" class="ui-shadow">
+			<ul id="resultList">
+			</ul>
+		    </div>-->
+		    <div id="ShowProductDetailsPage" style="display:none">
+			<p id="title" style="margin-bottom:10px;"></p>
+			<div class="ui-shadow box-container" style="display:inline; float:left;">
+			    <img id="ProductImage" style="margin:5px 5px 5px 5px; height:150px; width:150px;"/>
+			</div>
+			<div style="display:inline; float:right; margin:5px 5px 5px 5px;" >
+			    <p id="ProductPrice" class="ProductPrice"></p>
+			    <p style="font-size:17px; color:gray; font-weight:bold; text-shadow: 0 1px 1px #F6F6F6; text-align:center;">Online Price</p>
+			    <!--<a class="button-add-to-list" >Add to List</a>-->
+			    <a id="AddtoList" value="" class="ui-btn ui-btn-inline ui-btn-corner-all ui-shadow ui-btn-up-c-green">
+				<span class="ui-btn-inner" style="padding: 10px 10px;" >Add to List</span></a>
+			    <div style="margin-right:10px;">
+				<img src="img/gift-icon.png" style="height: 20px; width: 20px;"/>
+				<div style="display:inline; float:right; margin: 0px 2px 0px 0px;">
+				    <p style="font-size:15px; font-weight:bold; color:black; text-shadow: 0 1px 1px #F6F6F6; text-align:center;">Promotion </p>
+				    <p style="font-size:15px; font-weight:bold; color:black; text-shadow: 0 1px 1px #F6F6F6; text-align:center;">Available</p>
+				</div>
+			    </div>
+			</div>
+			<div class="clearfix"></div>
+			<div class="ui-shadow box-container">
+			    <img class="logo-store" src="img/aisle-image.png"/>
+			    <div style="display:inline; float:right; margin:10px 10px 10px 10px;">
+				<p style="font-size: 20px; font-weight:bold; color:black; text-shadow: 0 1px 1px #F6F6F6; text-align:center;">Find in a store</p>
+				<p style="font-size: 20px; font-weight:bold; color: black; text-shadow: 0 1px 1px #F6F6F6; text-align:center;">Aisle 9</p>
+			    </div>
+			</div>
 			
-		    </ul>
-		   <!-- <ul id="resultList" >
-			<li >
-			    <h3 >Stephen Weber</h3>
-			    <p ><strong>You've been invited to a meeting at Filament Group in Boston, MA</strong></p>
-			    <p >Hey Stephen, if you're available at 10am tomorrow, we've got a meeting with the jQuery team.</p>
-			</li>
-		    </ul>-->
+			<div class="ui-shadow box-container" style="margin-left: 3px; margin-right: 3px;">
+			    <ul style="float: left; list-style-type: disc; list-style-position: inside; padding-left: 5px; color: gray;">
+				<li>
+				    <p class="li-text">Container Type:</p>
+				    <p class="li-value">Can</p>
+				</li>
+				<li>
+				    <p class="li-text">Flavor:</p>
+				    <p class="li-value">Cherry</p>
+				</li>
+				<li>
+				    <p class="li-text">Serving Size:</p>
+				    <p class="li-value">1 Can</p>
+				</li>
+				<li>
+				    <p class="li-text">Serving per Container:</p>
+				    <p class="li-value">1</p>
+				</li>
+				<li>
+				    <p class="li-text">Calories from Fat/Serving:</p>
+				    <p class="li-value">0</p>
+				</li>
+			    </ul>
+			    <ul style="list-style-type: disc; list-style-position: inside; color: gray;">
+				<li>
+				    <p class="li-text">Calories per Serving:</p>
+				    <p class="li-value">140</p>
+				</li>
+				<li>
+				    <p class="li-text">Beverage Pack Size:</p>
+				    <p class="li-value">20Pack</p>
+				</li>
+				<li>
+				    <p class="li-text">Calorie Claim:</p>
+				    <p class="li-value">Regular</p>
+				</li>
+				<li>
+				    <p class="li-text">Caffeine:</p>
+				    <p class="li-value">Caffeinated</p>
+				</li>
+				<li>
+				    <p class="li-text">Individual Weight:</p>
+				    <p class="li-value">1.0Lb</p>
+				</li>
+			    </ul>
+			</div>
+			
+		    </div> <!--end div ShowProductDetailsPage-->
 		</div>
 	    </div>
 	</div>
-        
-        
-        <!--<div id="footer"> 
-        
-             <ul class="edgetoedge">
-                <li><a href="index.html">Featured</a></li>
-                <li><a href="#">Find Products </a></li>
-                <li><a href="shoppingList.html">Shopping List</a></li>
-                <li><a href="storeLocation.html">Store Locator</a></li>
-             </ul>
-        
-        </div>-->
-            
     </body>
-    <!--<script>
-	    var hScreen=document.documentElement.clientHeight;// browser window height
-            
-            var hToolbar=document.getElementById("Toolbar").clientHeight+1;// 1 px from the css toolbar border-bottom 
-            var hFooter= document.getElementById("footer").clientHeight;
-	    var hSearchBar= document.getElementById("searchbar").clientHeight+1;// 1 px from the css searchbar border-bottom 
-            var calculateHeight=hScreen-hToolbar-hFooter-hSearchBar;
-            var contentdiv = document.getElementById("content");
-            contentdiv.style.height=calculateHeight+ "px";
-            
-            //console.log("Your screen height is " + hScreen);
-            //console.log("Your Toolbar height is " + hToolbar);
-            //console.log("Your footer height is " + hFooter);
-            //console.log("Your div content height must be" + calculateHeight);
-    </script>-->
+   
 </html>

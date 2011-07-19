@@ -6,17 +6,12 @@
 body {
     font-family: Helvetica, sans-serif;
     -webkit-text-size-adjust: none;
-    background-color: #FFF8C6;
+   /* background-color: #FFF8C6;*/
+   background-color:white;
     display: block;
     
 }
 
-/*table {
-    margin: 0;
-    padding: 0;
-    border-spacing: 0px;
-    border: 0px;
-    }*/
 p{
     margin-left:10px;
 }
@@ -24,7 +19,6 @@ p{
 {
     width:100%;
     height:100%;
-   /* border: 1px solid pink;*/
 }
 #container{
     margin: 0;
@@ -33,39 +27,31 @@ p{
     width: 100%;
     height:100%;
    border: 0px;
-   /* border: 1px solid blue;*/
+  /* border: 1px solid blue;*/
     position: relative;
 }
 
 #content{
-    /*overflow: auto;*/
-    position: relative;
+  position: relative;
     margin: 0;
     padding: 0;
     border-spacing: 0px;
     width:100%;
     height:100%;
    border: 0px;
-  /* border: 1px solid red;*/
+    /*border: 1px solid red;*/
+   
 }
 #footer{
-    /*text-align:center;
-    margin-top: 20px;*/
+    
     width:100%;
-   /* position:fixed;*/
+
     position:absolute;
     bottom:0;
     z-index:1;
-    height:44px;
-   /*border: 1px solid red;*/
-
-   
+    height:54px;
 }
-/*a {
-    -webkit-tap-highlight-color: rgba(0,0,0,0);
-    display:block;
-    width:60px;
-}*/
+
 div{display:block;}
 /* @group Toolbar */
 .toolbar {
@@ -79,8 +65,6 @@ div{display:block;}
     background-image:-webkit-gradient(linear, left top, left bottom,from(rgba(255,255,255,.4)), to(rgba(255,255,255,.05)) ), 
         -webkit-gradient(linear, left top, left bottom, from(transparent), to(rgba(0,0,64,.1)));
     width: 100%;
-     
-   /* position:fixed;*/
     top:0;
     z-index:1;
 }
@@ -97,18 +81,14 @@ div{display:block;}
     background-image:-webkit-gradient(linear, left top, left bottom,from(rgba(255,255,255,.4)), to(rgba(255,255,255,.05)) ), 
         -webkit-gradient(linear, left top, left bottom, from(transparent), to(rgba(0,0,64,.1)));
 }
-
-
 #address{
     width:170px;
     height: 100%;
     text-align:center;
     font-style: italic;
     color: gray;
-   
 }
 #divproductsToSearch{
-   /* width:210px;*/
     height: 25px;
     margin-left: 5px;
     margin-top: 7px;
@@ -116,7 +96,6 @@ div{display:block;}
     border-radius:10px;
     display: inline-block;
     background-color: #FFFFFF;
-    
 }
 #divproductsToSearch input{
     border: 0px;
@@ -125,8 +104,6 @@ div{display:block;}
 #productsToSearch{
     width:170px;
    height: 100%;
-   /* background-image:-webkit-gradient(linear, left top, left bottom,from(rgba(255,255,255,.4)), to(rgba(255,255,255,.05)) ), 
-        -webkit-gradient(linear, left top, left bottom, from(transparent), to(rgba(0,0,64,.1)));*/
     text-align:center;
     font-style: italic;
     color: gray;
@@ -135,22 +112,30 @@ div{display:block;}
 {
     -webkit-border-radius: 10px;
     background-color: rgba(0,0,0,.7);
-    color: White;
+    
+    color: white;
     font-size: 13 px;
     font-weight: bold;
-    height: 60px;
-    left: 60px;
-    line-height: 20px;
-    margin: 0 auto;
-    position: absolute;
     text-align: center;
-    top: 120px;
+    
+    height: 60px;
     width: 200px;
+   
+    position: fixed;
+    left: 50%;
+    top:50%;
+    margin-top: -30px;
+    margin-left: -100px;
+    /*line-height: 20px;
+    margin: 0 auto;*/
+    
+    /*top: 100px;*/
+    
 }
 .button{
     position: absolute;
     overflow: hidden;
-    top: 5px;
+    top: 7px;
     right: 5px;
     margin: 0px;
     border-width: 0 5px;
@@ -158,7 +143,7 @@ div{display:block;}
     width: auto;
     height: 29px;
     line-height: 30px;
-    font-size: 10px;
+    font-size: 12px;
     font-weight: bold;
     color: #fff;
     text-overflow: ellipsis;
@@ -166,27 +151,34 @@ div{display:block;}
     white-space: nowrap;
     background: none;
     -webkit-border-image: url(../img/button.png) 0 5 0 5;
-   /* -webkit-appearance: push-button;*/
 }
-/* a.button:link{}*/
-/*a.button :hover, a.button :active{
-    background:none;
-    background-color:red;
-    -webkit-appearance:none;
-}*/
+
 a.button:link{}
 a.button:hover, a.button:active{
      background-color:transparent;
     -webkit-appearance:none;
 }
-
-.back {
+.leftButton {
+    
+    text-align: center;
+    line-height: 30px;
+    font-size: 12px;
+    font-weight: bold;
+    color: #fff;
+    text-shadow: 0px -1px 1px rgba(0,0,0,0.6);
+    position: absolute;
+    top: 7px;
     left: 6px;
-    right: auto;
-    padding: 0;
-    max-width: 55px;
+    width: auto;
+    background:none;
     border-width: 0 8px 0 14px;
     -webkit-border-image: url(../img/back_button.png) 0 8 0 14;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+a.leftButton:link{}
+a.leftButton:hover, a.leftButton:active{
+     background-color:transparent;
+    -webkit-appearance:none;
 }
 .search {
     position: absolute;
@@ -231,22 +223,6 @@ a.search:hover, a.search:active{
     margin-top: 12px;
     
 }
-/*a:link.logo  {
-    
-    padding: 10px;
-    margin: 10px;
-    vertical-align:middle;
-    font-family: inherit;
-    font-size: 15px;
-    text-align: center;
-    text-shadow: rgba(0, 0, 0, 0.5) 0px -1px 0;
-    color: black;
-    text-overflow: ellipsis;
-    text-decoration: none;
-    line-height: 45px;
-    
-    border: 2px solid black;
-}*/
 
 .clearfix {clear:both;}
 .toolbar > h1 {
@@ -311,17 +287,13 @@ ul.Category {
     /*not working with iScroll*/
     /*height: 100%;
     width: 100%;*/
-   
     
 }
 ul.Category li {
-    /*background-color: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#E0DAAF), to(#E0DAAF));*/
     border-bottom: 1px solid #B3B3B3;
     font-size: 20px;
     list-style-type: none;
-     height: 44px;
-   /* margin-bottom: -1px;*/
-   
+    min-height: 44px;
    /*if the text is too long to fit the li*/
     white-space: nowrap;
     width: 100%;
@@ -329,40 +301,25 @@ ul.Category li {
     text-overflow: ellipsis;
 }
 ul.Category li.arrow {
-    /*background-color: #404142 !important;*/
-   /* background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#FFF8C6), to(#FFF8C6));*/
     background-image: url(../img/chevron.png), -webkit-gradient(linear, 0% 0%, 0% 100%, from(#FFF8C6), to(#E0DAAF));
     background-position: right center;
     background-repeat: no-repeat;
-    /*background-image: -webkit-gradient(linear,left top,left bottom,
-		color-stop(0, 		#FFF8C6),
-		color-stop(1, 		#E0DAAF));*/
     
 }
 ul.Category li.simplearrow {
-    /*background-color: #404142 !important;*/
-   /* background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#FFF8C6), to(#FFF8C6));*/
     background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#FFF8C6), to(#E0DAAF));
     background-position: right center;
     background-repeat: no-repeat;
-    
 }
-
-
-/*ul li a:link, ul li a:visited
-{
-    color: white;
-    text-decoration: none;
-    /*display: block;
+ul.Category li.simplearrow p{
+     /*if the text is too long to fit the li*/
     white-space: nowrap;
     overflow: hidden;
-    text-shadow: rgba(0,0,0,.2) 0 1px 1px;
-    padding-left:10px;
-    vertical-align:middle;
-    /*word-wrap: break-word;
-    white-space: nowrap;
     text-overflow: ellipsis;
-}*/
+    display:inline-block;
+    margin-top: 5px;
+}
+
 ul.Category li.arrow a:active, ul.Category li.arrow a:hover {
     color: gray;
 }
@@ -370,18 +327,9 @@ ul.Category li.arrow a:link, ul.Category li.arrow a:visited
 {
     color: white;
     text-decoration: none;
-    /*display: block;*/
-    
     text-shadow: rgba(0,0,0,.2) 0 1px 1px;
     padding-left:10px;
     vertical-align:middle;
-    
-    /*display: inline-block;*/
-    /*white-space: nowrap;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    overflow: hidden;
-    word-wrap: break-word;*/
 }
 ul.Category li.arrow p
 {
@@ -393,13 +341,6 @@ ul.Category li.arrow p
     padding-left:10px;
     vertical-align:middle;
     margin: 11px 0 0 7px;
-    
-    /*display: inline-block;*/
-    /*white-space: nowrap;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    overflow: hidden;
-    word-wrap: break-word;*/
 }
 ul.Category li.sep {
     background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(rgba(0,0,0,0)), to(rgba(0,0,0,.5)));
@@ -411,10 +352,7 @@ ul.Category li.sep {
     padding: 2px 10px;
     text-shadow: #000 0 1px 0;
 }
-/*ul.Category li em {
-    font-weight: normal;
-    font-style: normal;
-}
+
 /* @end */
 /* @group Find */
 p.Find{
@@ -438,34 +376,23 @@ ul.Find {
     
 }
 ul.Find li {
-    /*background-color: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#E0DAAF), to(#E0DAAF));*/
     border-bottom: 1px solid #B3B3B3;
     list-style-type: none;
     min-height:44px;
-   /* height: 44px;*/
     margin-left:0px;
     padding-left: 0px;
-   /* margin-bottom: -1px;*/
    
    /*if the text is too long to fit the li*/
     white-space: nowrap;
     width: 100%;
     overflow: hidden;
     text-overflow: ellipsis;
-	
 }
 
 ul.Find li.arrow{
     background-image: -webkit-gradient(linear,left top,left bottom,
 		color-stop(0, 		#FFF8C6),
 		color-stop(1, 		#E0DAAF));
-    /*background-color: #404142 !important;*/
-   /* background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#FFF8C6), to(#FFF8C6));*/
-   /* background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#E0DABF), to(#E0DAAF));*/
-   /* margin-left:0px;*/
-    /*background-position: right center;
-    background-repeat: no-repeat;*/
-    
 }
 ul.Find li.arrow p{
 	margin: 11px 0 0 7px;
@@ -490,17 +417,6 @@ ul.Find li.arrow p.name{
     -webkit-border-bottom-left-radius: 10px;
     -webkit-border-bottom-right-radius: 10px;
 }
-/*ul.Find li.arrow p.name{
-	margin: 11px 0 0 7px;
-	width: auto;
-	color: #000;
-	font-weight: bold;
-	font-size: 17px;
-	text-overflow: ellipsis;
-	overflow: hidden;
-	white-space: normal;
-	float: left;
-}*/
 ul.Find li.arrow p.comment {
 	margin: 5px 5px 5px 7px;
         font-size: 12px;
@@ -512,24 +428,6 @@ ul.Find li.arrow p.comment {
 }
 /*  end group Find */
 
-#box{
-    right:0px;
-    border: 1px solid gray;
-    height: 70px;
-    width: 100px;
-    background-color: white;
-    color: black;
-    position: absolute;
-    text-align: center;
-    vertical-align: middle;
-    border-radius:5px;
-     -webkit-border-top-left-radius: 5px;
-    -webkit-border-top-right-radius: 5px;
-    -webkit-border-bottom-left-radius: 5px;
-    -webkit-border-bottom-right-radius: 5px;
-   
-    
-}
 .ui-shadow {
 	-moz-box-shadow: 0px 1px 4px 			rgba(0,0,0,.3);
 	-webkit-box-shadow: 0px 1px 4px 		rgba(0,0,0,.3);
@@ -574,10 +472,10 @@ ul.Find li.arrow p.comment {
 }
 .tabbar-wrapper ul {
     border-top: solid 1px rgba(255, 255, 255, 0.2);
-    height: 48px;
+    height: 53px;
     display: -webkit-box;
     margin: 0;
-    padding: 2px;
+    padding: 1px;
     text-align: center;
     color: hsla(0,0%,100%, 0.65);
     font-weight: bold;
@@ -607,8 +505,8 @@ ul.Find li.arrow p.comment {
     display: block;
     width: 36px;
     height: 36px;
-    margin: -3px auto -1px;
-    padding: 2px;
+    margin: -3px auto -3px;
+    padding: 1px;
     -webkit-box-sizing: border-box;
     background-position: 2px -34px;
 }
@@ -616,7 +514,6 @@ ul.Find li.arrow p.comment {
     display:block;
     width:32px;
     height:32px;
-   /* background-image: -webkit-gradient(linear, left top, left bottom, from(#bbb), to(#666));*/
 }
 .tabbar-wrapper li:target b {
     background-position: 2px -70px;
@@ -652,14 +549,186 @@ ul.Find li.arrow p.comment {
     -webkit-background-size: 48px 32px;
     background-position: right top;
 }
-.tabbar-wrapper li a:hover, a:active{
+/*.tabbar-wrapper li a:hover, a:active{
    
     text-decoration: none;
     display: block;
     background-color: #342826;
-    /*-webkit-background-size: 48px 32px;*/
     background-position: right top;
     color: white;
     -webkit-border-radius: 3px;
     text-shadow: rgba(0, 0, 0, .5) 1px 1px 1px;
+}*/
+
+.ingredientsBar{
+     -webkit-box-sizing: border-box;
+   
+    /*padding: 10px;*/
+    margin:0px 0px 0px 0px;
+    /*height: 44px;*/
+    width:100%;
+    background-color: #ECD672;
+    position: relative;
+    background-image:-webkit-gradient(linear, left top, left bottom,from(rgba(255,255,255,.4)), to(rgba(255,255,255,.05)) ), 
+        -webkit-gradient(linear, left top, left bottom, from(transparent), to(rgba(0,0,64,.1)));
+    text-align:center;
+    font-weight: bold;
+    font:black;
+    font-size:20px;
 }
+#title{
+    font-weight: bold;
+    color:#3B9C9C;
+    font-size:20px;
+}
+#subtitle{
+    font-weight: bold;
+    color:#4CC417;
+    font-size:15px;
+}
+.Steps{
+     background-color: white;
+     margin: 10px 10px 10px 10px;
+}
+.ui-btn-icon-right{
+    /*background-image: url(../img/menu_chevron.png), -webkit-gradient(linear,left top,left bottom,color-stop(0,#FDFDFD),color-stop(1,#EEE));*/
+    background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0,#FDFDFD),color-stop(1,#EEE));
+    background-position: right center;
+    background-repeat: no-repeat;
+}
+/*.select-choice{
+    border: 0px;
+    -webkit-appearance: none;
+    width: 100%;
+    height:100%;
+    background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0,#FDFDFD),color-stop(1,#EEE));
+    text-align: center;
+    display:inline-block;
+    margin: 0px;
+    padding: 0px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 10px;
+    cursor: pointer;
+    opacity: 0;
+    -ms-filter: "alpha(opacity=0)";
+    filter: alpha(opacity=0);
+}*/
+.select-choice{
+   
+    border: 0px;
+    -webkit-appearance: none;
+    width: 100%;
+    height:100%;
+    background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0,#FDFDFD),color-stop(1,#EEE));
+    text-align: center;
+    display:inline-block;
+    margin: 0px;
+    padding: 0px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 10px;
+    cursor: pointer;
+    opacity: 0;
+    -ms-filter: "alpha(opacity=0)";
+    filter: alpha(opacity=0);
+}
+.select-choice-text{
+    position:absolute;
+    border: 0px;
+    -webkit-appearance: none;
+    height:100%;
+    text-align: center;
+    display:inline-block;
+    margin: 0px;
+    padding: 3px 0px 0px 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    
+}
+#BestMatchBar{
+    height: 44px;
+     background-image: -webkit-gradient(linear,left top,left bottom,
+		color-stop(0, 		#FFF8C6),
+		color-stop(1, 		#E0DAAF));
+    
+}
+#divresultListViewThumbnails{
+    background-image: -webkit-gradient(linear,left top,left bottom,
+		color-stop(0, 		#FFF8C6),
+		color-stop(1, 		#E0DAAF));
+}
+.ui-btn-icon-right-list-view{
+    background-image: url(../img/chevron.png), -webkit-gradient(linear,left top,left bottom,
+		color-stop(0, 		#FFF8C6),
+		color-stop(1, 		#E0DAAF));
+    background-position: right center;
+    background-repeat: no-repeat;
+    
+}
+/*product details page*/
+.ProductPrice{
+    font-size: 20px;
+    font-weight:bold;
+    color:black;
+    padding-right:10px;
+    text-align:center;
+}
+
+.box-container{
+    background-color:white;
+    border:1px solid #CCC;
+    border-radius:10px;
+    margin-left:10px;
+    margin-bottom: 10px;
+    margin-right: 10px;
+}
+.ui-btn-up-c-green{
+    border: 1px solid #CCC;
+    background: #EEE;
+    font-weight: bold;
+    color: #444;
+    text-shadow: 0 1px 1px #F6F6F6;
+    background-color: #4CC417;
+    background-image:-webkit-gradient(linear, left top, left bottom,from(rgba(255,255,255,.4)), to(rgba(255,255,255,.05)) ), 
+        -webkit-gradient(linear, left top, left bottom, from(transparent), to(rgba(0,0,64,.1)));
+}
+.logo-store{
+    margin-left: 20px;
+    height:80px;
+    width: 100px;
+}
+.li-text{font-size:10px; color: gray; font-weight:bold; display:inline; margin-left:-6px;}
+.li-value{font-size:10px; color: gray; display:inline; margin-right:1px; margin-left:0px;}
+
+#ShowProductDetailsPage a:link {
+   
+}
+#ShowProductDetailsPage a:hover ,#ShowProductDetailsPage a:active, #ShowProductDetailsPage a:visited {
+     border: 1px solid #CCC;
+    background: #EEE;
+    font-weight: bold;
+    color: #444;
+    text-shadow: 0 1px 1px #F6F6F6;
+    background-color: #4CC499;
+    background-image:-webkit-gradient(linear, left top, left bottom,from(rgba(255,255,255,.4)), to(rgba(255,255,255,.05)) ), 
+        -webkit-gradient(linear, left top, left bottom, from(transparent), to(rgba(0,0,64,.1)));
+}
+/*on click the button on htc it doesn't become blue*/
+.active-add-to-list-htc{
+     border: 1px solid #CCC;
+    background: #EEE;
+    font-weight: bold;
+    color: #444;
+    text-shadow: 0 1px 1px #F6F6F6;
+    background-color: #4CC499;
+    background-image:-webkit-gradient(linear, left top, left bottom,from(rgba(255,255,255,.4)), to(rgba(255,255,255,.05)) ), 
+        -webkit-gradient(linear, left top, left bottom, from(transparent), to(rgba(0,0,64,.1)));
+}
+.Shopping-cart-icon{
+    float:right;
+    height: 30px;
+    width: 40px;
+    margin: 7px 5px 0px 0px;
+}
+/*end product details page*/

@@ -1,26 +1,33 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <!--<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />-->
+        
         <meta name="viewport" content="width=device-width; height=device-height; initial-scale=1.0; maximum-scale=1.0;  user-scalable=no">
-       
         
         <!--<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>-->
         <meta name="apple-mobile-web-app-capable" content="yes">
         <meta name="apple-mobile-web-app-status-bar-style" content="default">
+            
+        
+        
+        <script type="text/javascript" src="script/jquery-1.6.1.js"></script>
+        
+      <!-- <script type="text/javascript" src="jquery.mobile-1.0b1/jquery.mobile-1.0b1.js"></script>-->
         <script type="text/javascript" src="script/shopping.js"></script>
         <script type="text/javascript" src="script/iscroll.js"></script>
-       <!-- <script type="text/javascript" src="script/phonegap.0.9.5.1.js"></script>-->
+         <script type="text/javascript" src="script/phonegap.0.9.5.1.js"></script>
+       
         
         
         <link rel="apple-touch-icon" href="img/AA_app_ICON.png">
         <link rel="apple-touch-icon-precompsed" href="img/AA_app_ICON_android_bookmark_60.png">
         <link rel="apple-touch-startup-image" href="img/AA_splash_page_scaled.png">
         
+        <link type="text/css" rel="stylesheet" href="jquery.mobile-1.0b1/jquery.mobile-1.0b1.css">
         <link type="text/css" rel="stylesheet" href="style/style.css">
-        <!--<link type="text/css" rel="stylesheet" href="style/jquery.mobile-1.0a4.1.min.css">    -->
-        <script type="text/javascript" src="script/jquery.js"></script>
-        <!--<script type="text/javascript" src="script/jquery.mobile-1.0a4.1.min.js"></script>-->
+            
+        
+        
      
        <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script> 
         <title>Aisle Alley</title>
@@ -39,18 +46,13 @@
             .tabbar-wrapper li:nth-child(2) i { -webkit-mask-position-x: -36px; }
             .tabbar-wrapper li:nth-child(3) i { -webkit-mask-position-x: -72px; }
             .tabbar-wrapper li:nth-child(4) i { -webkit-mask-position-x: -108px; }
-            
-            .tabbar-wrapper li:nth-child(1) b { background-position-x: 2px; }
-            .tabbar-wrapper li:nth-child(2) b { background-position-x: -34px; }
-            .tabbar-wrapper li:nth-child(3) b { background-position-x: -70px; }
-            .tabbar-wrapper li:nth-child(4) b { background-position-x: -106px; }
-            
+            .tabbar-wrapper li:nth-child(5) i { -webkit-mask-position-x: -144px; }
         </style>
         <script>
         const AREA_SIZE = 36;
        
-        /* Prepare the 3 states of 3 icons */
-        initTabBarIcons("tabbar-icons", 4); 
+        /* Prepare the 5 states of 5 icons */
+        initTabBarIcons("tabbar-icons", 5); 
         function initTabBarIcons(id, count) {
             var ctx = document.getCSSCanvasContext("2d", id, AREA_SIZE * count, AREA_SIZE * count);
                for(var j=1; j<=count; j++){
@@ -61,95 +63,49 @@
                        i.src = "img/Featured_ICON.png";
                         i.onload = function() {
                         ctx.drawImage(this, 0, 0);
-                        //createShadows(ctx);
+                        
                     }
                        break;
                    case 2:
                        i.src = "img/Find-Products-ICON.png";
                         i.onload = function() {
                         ctx.drawImage(this, 36, 0);
-                        //createShadows(ctx);
+                        
                     }
                        break;
                    case 3:
                        i.src = "img/Shopping-List-ICON.png";
                         i.onload = function() {
                         ctx.drawImage(this, 72, 0);
-                        //createShadows(ctx);
-                    }
+                        
+                         }
                        break;
                    case 4:
                        i.src = "img/Store-Locator-ICON.png";
                         i.onload = function() {
                         ctx.drawImage(this, 108, 0);
-                        //createShadows(ctx);
-                    }
+                        
+                        }
+                       break;
+                    case 5:
+                       i.src = "img/Featured_ICON.png";
+                        i.onload = function() {
+                        ctx.drawImage(this, 144, 0);
+                        
+                        }
                        break;
                  } //end switch  
                 }//end for
             
         }
         
-        //function createIcons(ctx) {
-        //    ctx.save();
-        //   
-        //    /* Offset of 1x1 pixel */
-        //    ctx.translate(1, 1);
-        //    ctx.fillStyle = "black";
-        //    
-        //    /* A circle icon */
-        //    ctx.beginPath();
-        //    ctx.arc(15, 15, 15, 0, Math.PI * 2, false);
-        //    ctx.fill();
-        //    
-        //    /* A square icon */
-        //    ctx.translate(AREA_SIZE, 0);
-        //    ctx.fillRect(0, 0, 30, 30);
-        //    
-        //    /* A triangle icon */
-        //    ctx.translate(AREA_SIZE, 0);
-        //    ctx.moveTo(15, 0);
-        //    ctx.lineTo(30, 30);
-        //    ctx.lineTo(0, 30);
-        //    ctx.fill();
-        //    
-        //    ctx.restore();
-        //}
         
-        //function createShadows(ctx) {
-        //    var c = ctx.canvas;
-        //    var w = c.width;
-        //    var h = c.height / 3;
-        //    ctx.save();
-        //    
-        //    /* Draw the emboss shadow */
-        //    ctx.globalAlpha = 0.25;
-        //    ctx.drawImage(c, 0,0,w,h, 0,h*1-1,w,h);
-        //    
-        //    /* Draw the drop shadow */
-        //    ctx.globalAlpha = 0.1;
-        //    ctx.drawImage(c, 0,0,w,h, 1,h*2+0,w,h);
-        //    ctx.drawImage(c, 0,0,w,h, 2,h*2+1,w,h);
-        //    ctx.drawImage(c, 0,0,w,h, 3,h*2+2,w,h);
-        //   
-        //     
-        //    ctx.restore();
-        //}
         </script>
-        
-        
-        
         <script type="text/javascript" language="javascript">
         
         
         var myScroll;
-        //function loaded() {
-        //        myScroll = new iScroll('content',{hScrollbar:false, desktopCompatibility: true });
-        //}
-        // 
-        //document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
-        //document.addEventListener('DOMContentLoaded', loaded, false);
-       
+        
        function onCompletion () {
         // Here modify the DOM in any way, eg: by adding LIs to the scroller UL
         
@@ -157,28 +113,20 @@
                 myScroll.refresh();
             }, 0);
         };
-        
-        
-        //debugger;
         $(document).ready(function() {
             loadPage();
-           
-            //myScroll.destroy();
-            //loaded();
-            
             var FeaturedIcon=document.getElementsByTagName('i')[0];
             $(FeaturedIcon).addClass('iactivelink');
             
         });
         
-       if(DetectIphoneOrIpod()==true){
+       if(DetectIphoneOrIpod()==true||DetectIpad()==true){
         $(document).ready(function () {
             var viewportwidth;
             var viewportheight;
             viewportwidth = window.innerWidth;
             viewportheight = window.innerHeight;
-            //alert("window.innerWidth" + window.innerWidth + "window.innerHeight" + window.innerHeight);
-            //alert("screen.width" + screen.width + "screen.height" + screen.height);
+            
             function reorient(e) {
                 
                 var landscape = (window.orientation == 90|| window.orientation== -90);// landscape true= landscape
@@ -189,18 +137,7 @@
                     viewport = document.querySelector("meta[name=viewport]");
                     viewport.setAttribute('content', 'width=device-height; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;');
                     viewport.setAttribute('content', 'height='+window.innerHeight+'px');// iPhone
-                     //viewport.setAttribute('content', 'width=device-width; initial-scale=1.0; maximum-scale=1.0; minimum-scale=1.0; user-scalable=0;');
-                    //viewport.setAttribute('content', 'height='+window.innerHeight+'px');// iPhone
-                    //alert("landscape");
-                    //viewport.setAttribute('content', 'height='+screen.height+'px');
-                    //viewport.setAttribute('content', 'width='+screen.width+'px');
-                    //viewport.setAttribute('content', 'initial-scale=1.0; maximum-scale=1.0; minimum-scale=1.0; user-scalable=0;');
                      
-                    
-                    //viewport.setAttribute('content', 'width=48 0px; height=300px; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;');// iPhone
-                    //viewport.setAttribute('content', 'width=533px; height=260px; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;');// android
-                    //alert("window.innerWidth" + window.innerWidth);
-                    //alert(window.innerWidth+"X"+window.innerHeight );
                     Size();
                    onCompletion(); 
                     
@@ -209,12 +146,8 @@
                 else{
                     
                         viewport =  document.querySelector("meta[name=viewport]");
-                        //viewport.setAttribute('content', 'height='+screen.height+'px');
-                        //viewport.setAttribute('content', 'width='+screen.width+'px');
-                        //viewport.setAttribute('content', 'initial-scale=1.0; maximum-scale=1.0; minimum-scale=1.0; user-scalable=0;');
                         viewport.setAttribute('content', 'width=device-width; height=device-height; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;');
-                        //viewport.setAttribute('content', 'width=480px; height=300px; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;');
-                        //alert("portrait");
+                        
                         Size();
                         onCompletion();
                 }
@@ -226,18 +159,16 @@
        }//end if iPhone or iPod
        if(DetectAndroid()==true){
          $(document).ready(function () {
-            var i=0;
             var oldOrientatin, newOrientation;
-            var ScreenWidth =screen.width;
-            var ScreenHeight= screen.height;
-            
+            //var ScreenWidth =screen.width;
+            //var ScreenHeight= screen.height;
             // Detect whether device supports orientationchange event, otherwise fall back to
             // the resize event.
             var supportsOrientationChange = "onorientationchange" in window,
                 orientationEvent = supportsOrientationChange ? "orientationchange" : "resize";
            
             
-            window.addEventListener(orientationEvent, function() {
+            window.addEventListener(orientationEvent , function() {
                 //var viewportwidth; var viewportheight;
                 
                 var landscape = (window.orientation == 90|| window.orientation== -90);// landscape true= landscape
@@ -252,47 +183,31 @@
                     viewport = document.querySelector("meta[name=viewport]");
                     viewport.setAttribute('content', 'width=device-height; initial-scale=1.0; maximum-scale=1.0;  user-scalable=no;');
                     viewport.setAttribute('content', 'height='+window.innerHeight+'px');
-                   
-                    $('#container').width(ScreenHeight+60);// 60 px address bar
-                    var hFooter= document.getElementById("footer").clientHeight;
-                    var calculateHeight=ScreenWidth-hFooter-60;// 60 px address bar
-                    $('#container').height(calculateHeight);
-                    $('#content').height($("#container").height()-$("#Toolbar").height()-$("#searchbar").height());
-                    $('#content').width($('#container').width());
+                    setTimeout(function(){
+                        //alert('screen.height is '+screen.height+'screen.width is '+ screen.width);
+                        Size();
+                        onCompletion();
+                        },500);
                     
-                     //$('.big_content').height($("#content").height()/2-24);// div big_content 10 px from margin-bottom  and margin-top and 2 px from border top and bottom
-                    $('.big_content').width($("#content").width()-12-2);// div big_content 10 px from margin-left and margin-right and 2 px from border left and right
-                    //$('.small_content').height($("#content").height()/2-24);
-                    $('.small_content').width($("#content").width()/2-12);
-                    
-                    onCompletion();
                     oldOrientatin='landscape';
                     
                  }
                  if(landscape==false && newOrientation!=oldOrientatin ){
                     viewport =  document.querySelector("meta[name=viewport]");
                     viewport.setAttribute('content', 'width=device-width; height=device-height; initial-scale=1.0; maximum-scale=1.0;  user-scalable=no;');
-                    $('#container').width(ScreenWidth);
-                    var hFooter= document.getElementById("footer").clientHeight;
-                    var calculateHeight=ScreenHeight-hFooter;
-                    $('#container').height(calculateHeight);
-                    $('#content').height($("#container").height()-$("#Toolbar").height()-$("#searchbar").height());
-                    $('#content').width($('#container').width());
-                    
-                    
-                     //$('.big_content').height($("#content").height()/2-24);// div big_content 10 px from margin-bottom  and margin-top and 2 px from border top and bottom
-                    $('.big_content').width($("#content").width()-12-2);// div big_content 10 px from margin-left and margin-right and 2 px from border left and right
-                    //$('.small_content').height($("#content").height()/2-24);
-                    $('.small_content').width($("#content").width()/2-12);
-                    
-                    onCompletion();
+                     setTimeout(function(){
+                        //alert('screen.height is '+screen.height+'screen.width is '+ screen.width);
+                        Size();
+                        onCompletion();
+                        },500);
+                   
                     oldOrientatin='portrait';
-                    
                  }
-               
             }, false);// end addEventListener
          });// end document.ready
        }// end detect Android
+       
+       
         
         connect_db();// only once
         function loadPage(url) {
@@ -301,7 +216,7 @@
                     $('i').removeClass('iactivelink');
                     $('i').addClass('iinactivelink');
                     });
-            $("#content").append(' <div id="progress">Loading...<br /><img src="img/ajax-loader-big.gif" /></div>');
+            $("#content").append(' <div id="progress" >Loading...<br /><img src="img/ajax-loader-big.gif" /></div>');
             scrollTo(0, 0);
             if (url == undefined) {
                 hijackLinks();
@@ -315,16 +230,10 @@
             
             
             
-            $('#footer a').click(function(e) {
+            $('#footer a').unbind('click').click(function(e) {
                 e.preventDefault();
                 
-                //$('#footer a i').each(function(){
-                //    $('i').removeClass('iactivelink');
-                //    $('i').addClass('iinactivelink');
-                //    });
-                
                 if(e.target.tagName.toLowerCase() == 'img'){// if click on the img tab bar
-                //if(e.target instanceof HTMLImageELement){
                     loadPage(e.target.parentNode.href);
                 }
                 else{
@@ -335,6 +244,7 @@
                         var child2=$(child1).children();
                         $(child2).addClass('iactivelink');
                         //alert('in a');
+                       
                         
                     }
                     else
@@ -345,6 +255,7 @@
                             var child1=$(e.target).children();
                             $(child1).addClass('iactivelink');
                             //alert('in b');
+                            
                         }
                         else
                         {
@@ -353,39 +264,25 @@
                                 loadPage(e.target.parentNode.parentNode.href);
                                 $(e.target).addClass('iactivelink');
                                 //alert('in i');
-                                
+                              
                             }
                         }
                         
                     }
                 }
                
-               
             });
-            
-           
-           
             //resize the container 
             Size();
             
             // scroll the content
             var content=document.getElementById('content');
             if(content){
-                //myScroll.destroy(); 
-                myScroll = new iScroll('content', { hScrollbar:false, desktopCompatibility: true });
+               
+                myScroll = new iScroll('content', { hScrollbar:false, desktopCompatibility: true, snap:true});
                 myScroll.refresh();
-                //document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
-                //document.addEventListener('DOMContentLoaded', loaded, false);
-                 //myScroll.refresh();
-                 //onCompletion();
+                
             }
-           
-            
-            ////$('.big_content').height($("#content").height()/2-24);// div big_content 10 px from margin-bottom  and margin-top and 2 px from border top and bottom
-            //$('.big_content').width($("#content").width()-12-2);// div big_content 10 px from margin-left and margin-right and 2 px from border left and right
-            ////$('.small_content').height($("#content").height()/2-24);
-            //$('.small_content').width($("#content").width()/2-12);
-            
             $(document.getElementById('Category')).ready(function() {
                         // show all the products when div is ready
                    //findShoppingProducts();
@@ -397,17 +294,24 @@
                    initialize();
             });
             
+            $(document.getElementById('Recipes')).ready(function() {
+                   //show all recipes     
+                   recipesList();
+            });
+            $(document.getElementById('resultListViewThumbnails')).ready(function(){
+                // show all products on find products page first load
+                ShowAllProducts();
+                
+            });
+            
             $('#progress').remove();       
         }
         </script>
     </head>
     <body >
-        <div id="position" >
-            <div id="container">
-          <!--  <div id="container" ontouchmove="scrollDiv(event,'content');" ontouchstart="scrollStart(event);" ontouchend="scrollEnd(event);" >-->
-              <!-- <div id="scroller" style="position:relative;">-->
-                    
-                    <div class="toolbar" id="Toolbar">
+        <div id="position" data-role="page">
+            <div id="container" >                   
+                    <div class="toolbar" id="Toolbar" >
                         <h1> Featured</h1>
                        <!--<a class="logo"></a>-->
                        <img src="img/AA_top_bar_icon.png" alt="Logo" class="logo">
@@ -416,7 +320,7 @@
                 
                
                    
-                        <div id="content">
+                        <div id="content" >
                             <div style="display:inline-block;">
                                 <div>
                                     <div class="small_content"></div>
@@ -432,73 +336,127 @@
            </div>
            
           <!-- fixed on the bottom page-->
-           <div id="footer">
+           <div id="footer" data-role="footer">
             
             <nav class="tabbar-wrapper">
                 <ul>
-                    <li ><a href="index.html" ><b><i></i></b>Featured</a></li>
-                    <li><a href="findProducts.html"><b><i></i></b>Find Products</a></li>
-                    <li><a href="shoppingList.html"><b><i></i></b>Shopping List</a></li>
-                    <li><a href="storeLocation.html"><b><i></i></b>Store Locator</a></li>
+                    <li ><a rel="external" href="index.html" ><b><i></i></b>Featured</a></li>
+                    <li><a rel="external" href="findProducts.html" ><b><i></i></b>Find Products</a></li>
+                    <li><a rel="external" href="shoppingList.html"><b><i></i></b>Shopping List</a></li>
+                    <li><a rel="external" href="storeLocation.html"><b><i></i></b>Store Locator</a></li>
+                    <li><a rel="external" href="recipes.html" ><b><i></i></b>Recipes</a></li>
                 </ul>
             </nav>
             
-                <!--<ul class="edgetoedge">
-                   <li><a href="index.html"><img alt="Featured"  src="img/_Featured-ICON.png"><br>Featured</a></li>
-                   <li><a href="findProducts.html"><img alt="findProducts"  src="img/Find-Products-ICON.png"><br>Find Products </a></li>
-                   <li><a href="shoppingList.html"><img alt="shoppingList"  src="img/Shopping-List-ICON.png"><br>Shopping List</a></li>
-                   <li><a href="storeLocation.html"><img alt="storeLocation" src="img/Store-locator-ICON.png"><br>Store Locator</a></li>
-                </ul>-->
           </div>
        </div> <!--End of position -->  
             
     </body>
     <script>
-    // function alertDismissed() {
-    //    // do something
-    //}
-    //function showAlert() {
-    //    navigator.notification.alert(
-    //        'You are the winner!',  // message
-    //        alertDismissed,         // callback
-    //        'Game Over',            // title
-    //        'Done'                  // buttonName
-    //    );
-    //}
     
-    
-    
-           function Size(){
-            //alert("size");
+        function Size(){
             var hScreen=window.innerHeight;// works for iPhone
-            var WidthScreen=window.innerWidth;
+            var landscape = (window.orientation == 90|| window.orientation== -90);// landscape true= landscape
+            //var WidthScreen=window.innerWidth;
             // size the bottom menu
             var hFooter= document.getElementById("footer").clientHeight;
-            //var wFooter=document.getElementById("footer").clientWidth;
-            var wPosition=document.getElementById("position").clientWidth;
-            var hPosition=document.getElementById("position").clientHeight;
-            //document.getElementById("footer").style.bottom=0+ "px";
-            //wFooter= WidthScreen;
-            wPosition=WidthScreen;
-            hPosition=hScreen-hFooter;
+            //var wPosition=document.getElementById("position").clientWidth;
+            //var hPosition=document.getElementById("position").clientHeight;
+            //wPosition=WidthScreen;
+            //hPosition=hScreen-hFooter;
             
-            var calculateHeight=hScreen-hFooter;
-            var contentdiv = document.getElementById("container");
-            contentdiv.style.height=calculateHeight+ "px";
-            contentdiv.style.width=WidthScreen+ "px";
+            if(DetectAndroid()==true){
+                var addressBar;
+                if(landscape==true){
+                    addressBar=320-hScreen;
+                }
+                else{
+                    addressBar=533-hScreen;
+                }
+                
+                var calculateHeight=hScreen-hFooter;
+                //alert("hScreen is "+ hScreen+ "h footer is "+ hFooter +" address bar is "+ addressBar);//h screen 239 android
+            }
+            else{
+                var calculateHeight=hScreen-hFooter;
+            }
+             $('#container').height(calculateHeight);
+            //contentdiv.style.width=WidthScreen+ "px";
+            //alert("container height is" + $('#container').height());
             
-            $('#container').width(window.innerWidth);
-            $('#content').height($("#container").height()-$("#Toolbar").height()-$("#searchbar").height());
-            $('#content').width($('#container').width());
-            ////alert("content.height"+  $('#content').height() + "content width " +$('#content').width() );
+            ////$('#container').width(window.innerWidth);
+            $('#container').width('100%');
+            // for the find products page - product details list view 
+            if($('#searchbar').height()==null)
+            {
+                if($("#BestMatchBar").height()==null)
+                    $('#content').height($("#container").height()-$("#Toolbar").height());
+                if($("#BestMatchBar").height()!=null)
+                     $('#content').height($("#container").height()-$("#Toolbar").height()-$("#BestMatchBar").height());
+            }
+            else{
+                if($("#BestMatchBar").height()==null)
+                    $('#content').height($("#container").height()-$("#Toolbar").height()-$("#searchbar").height());
+                if($("#BestMatchBar").height()!=null)
+                    if($('#searchbar').css('display')!="none" && $('#BestMatchBar').css('display')!="none")
+                        {
+                            
+                            $('#content').height($("#container").height()-$("#Toolbar").height()-$("#searchbar").height()-$("#BestMatchBar").height());
+                        }
+                    else
+                    {
+                        
+                        $('#content').height($("#container").height()-$("#Toolbar").height());
+                    }
+            }
+            ////$('#content').width($('#container').width());
+           $('#content').width('100%');
+           var contentClientWidth=document.getElementById('content').clientWidth;
+           //alert("content client width is "+ contentClientWidth);//533
+           //alert('content height is'+ $('#content').height());
            
-           
-             //$('.big_content').height($("#content").height()/2-24);// div big_content 10 px from margin-bottom  and margin-top and 2 px from border top and bottom
-            $('.big_content').width($("#content").width()-12-2);// div big_content 10 px from margin-left and margin-right and 2 px from border left and right
-            //$('.small_content').height($("#content").height()/2-24);
-            $('.small_content').width($("#content").width()/2-12);
-           }
-            
-        </script>
+           $('.big_content').width(contentClientWidth-12);// div big_content 10 px from margin-left and margin-right and 2 px from border left and right
+           $('.small_content').width(contentClientWidth/2-12);//10 margin 2border
+            ////$('.big_content').width($("#content").width()-12-2);// div big_content 10 px from margin-left and margin-right and 2 px from border left and right
+            ////$('.small_content').width($("#content").width()/2-12);
+            //alert("big content width "+  $('.big_content').width() + "small content width "+ $('.small_content').width());
+       
+        
+        }
+        
+        
+        
+       
+ 
+      //  function getWidth()
+      //  {
+      //    xWidth = null;
+      //    if(window.screen != null)
+      //      xWidth = window.screen.availWidth;
+      // 
+      //    if(window.innerWidth != null)
+      //      xWidth = window.innerWidth;
+      // 
+      //    if(document.body != null)
+      //      xWidth = document.body.clientWidth;
+      // 
+      //    return xWidth;
+      //  }
+      //function getHeight() {
+      //  xHeight = null;
+      //  if(window.screen != null)
+      //    xHeight = window.screen.availHeight;
+      // 
+      //  if(window.innerHeight != null)
+      //    xHeight =   window.innerHeight;
+      // 
+      //  if(document.body != null)
+      //    xHeight = document.body.clientHeight;
+      // 
+      //  return xHeight;
+      //}
+ 
+
+    </script>
   
 </html>
